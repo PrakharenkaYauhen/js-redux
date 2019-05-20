@@ -1,38 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8" />
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <title>Application JS + Redux</title>
+</head>
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+<body>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+    <div id="root">
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+        <h1 class='todo__header1'>To-do list</h1>
+        <div class='todo'>
+
+            <div class='todo__tasks-add'>
+                <h2 class='todo__header2'>Calendar</h2>
+                <table class='todo__table' id='todo__table'>
+                    <thead>
+                        <tr>
+                            <th class='todo__table__data todo__table__data_header'>
+                                <span class="icon-undo2"></span></th>
+                            <th class='todo__table__data todo__table__data_header'>
+                                <span class="icon-arrow-left2"></span></th>
+                            <th class='todo__table__data todo__table__data_header' colSpan='3'
+                                id='table-header-year-month'></th>
+                            <th class='todo__table__data todo__table__data_header'>
+                                <span class="icon-arrow-right2"></span></th>
+                            <th class='todo__table__data todo__table__data_header'>
+                                <span class="icon-redo2"></span></th>
+                        </tr>
+                    </thead>
+                    <tbody id='table-body'></tbody>
+                </table>
+            </div>
+
+            <div class='weather'>
+                <h2 class='weather__header'>Weather</h2>
+                <div class='weather__content'></div>
+            </div>
+
+            <h2 class='juventus__header'>Information about FC Juventus</h2>
+            <div class='juventus'>
+                <div class='juventus__content'></div>
+            </div>
+            
+            <div class='todo__tasks'>
+                <div class='modal-button'>
+                    <button class='modal-button__button'>add a new task</button>
+                </div>
+            </div>
+
+            <div class='todo__tasks'>
+                <h2 class='todo__header2'>Today's tasks</h2>
+                <ol class='todo__tasks__list' id="todo__tasks__left">
+                    <li class='todo__tasks__item'>
+                        <span>{props.task}</span>
+                        <button class='todo__tasks__button'></button>
+                    </li>
+                </ol>
+
+                <h2 class='todo__header2'>Today's done's tasks</h2>
+                <ul class='todo__tasks__list' id="todo__tasks__done">
+                    <li class='todo__tasks__item'>
+                        <span>{props.task}</span>
+                        <button class='todo__tasks__button todo__tasks__button_delete'></button>
+                        <button class='todo__tasks__button todo__tasks__button_done'></button>
+                        <button class='todo__tasks__button todo__tasks__button_correct'></button>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class='modal__cover'>
+            <div class='modal'>
+                <h2 class='modal__header'>Please, add a new task</h2>
+                <label class='modal__textarea_label'>Your new task:
+                    <textarea class='modal__textarea'></textarea>
+                </label>
+                <button class='modal__button_enter'>add a new task</button>
+                <button class='modal__button_exit'>x</button>
+            </div>
+
+            <div class='modal__juventus-stuff'>
+                <div class='modal__juventus-stuff__stuff'></div>
+                <button class='modal__button_exit'>x</button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
 </html>

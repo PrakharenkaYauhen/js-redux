@@ -20,6 +20,7 @@ import { actionAddTaskModal } from './actions/actionAddTaskModal.js';
 import { actionAddTaskInTheList } from './actions/actionAddTaskInTheList.js';
 import { actionDeleteTask } from './actions/actionDeleteTask.js';
 import { actionGetCurrentStuff } from './actions/actionGetCurrentStuff.js';
+import { actionSelectChange } from './actions/actionSelectChange.js';
 
 // const weather = document.querySelector('.weather__content');
 
@@ -52,6 +53,10 @@ listTasksLeft.addEventListener('click',  actionDeleteTask);
 
 let button = document.getElementById('button');
 button.addEventListener('click', someAction);
+
+let select = document.getElementById('team-select');
+console.log(select);
+select.addEventListener('change', actionSelectChange);
 
 store.dispatch(actionGetCurrentStuff());
 

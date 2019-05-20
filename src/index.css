@@ -396,6 +396,7 @@ table tr:last-child td:last-child {
 
 .juventus__header {
     margin: 10px auto;
+    position: relative;
 }
 
 .juventus__content {
@@ -528,4 +529,12 @@ table tr:last-child td:last-child {
 .icon-redo2:active {
     color: rgba(221, 221, 221, 1);
     border: 1px solid rgba(221, 221, 221, 1);
+}
+
+#team-select {
+    height: 28px;
+    position: absolute;
+    top: -0.5px;
+    right: -120px;
+    font-size: 18px;
 }

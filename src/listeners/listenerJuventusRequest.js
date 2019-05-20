@@ -4,6 +4,7 @@ import { store } from './../index.js';
 import { actionShowCurrentStuff } from './../actions/actionShowCurrentStuff.js';
 
 let previousJuventusString;
+let previousClub;
 let getTodaysGame = (currentDate, currentDayInTheCalendar, juventusObject, loadJuventusStuffComplete, juventusStuff) => {
     const juventusTodayGame = document.querySelector('.juventus__today-game');
 
@@ -61,6 +62,7 @@ let listenerJuventusRequest = () => {
     const state = store.getState();
     const currentDate = state.reducerDateChangeCalendar.currentDate;
     const currentDayInTheCalendar = state.reducerDateChangeCalendar.currentDayInTheCalendar;
+    const club = state.reducerJuventus.club;
     const loadJuventusComplete = state.reducerJuventus.loadJuventusComplete;
     const juventusObject = state.reducerJuventus.juventusObject;
     const loadJuventusStuffComplete = state.reducerJuventusStuff.loadJuventusStuffComplete;
@@ -69,8 +71,9 @@ let listenerJuventusRequest = () => {
 
     let currentJuventusString = JSON.stringify(juventusObject);
 
-    if (previousJuventusString !== currentJuventusString) {
+    if (previousJuventusString !== currentJuventusString || club !== previousClub) {
         previousJuventusString = currentJuventusString;
+        previousClub = club;
         console.log('subscribeJuventusRequest 1-st load');
     } else {
         getTodaysGame(currentDate, currentDayInTheCalendar, juventusObject, loadJuventusStuffComplete, juventusStuff);

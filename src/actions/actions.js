@@ -42,20 +42,22 @@ export function receiveWeather(weatherObject) {
     }
 }
 
-export function requestJuventus() {
+export function requestJuventus(club) {
     return {
         type: REQUEST_JUVENTUS,
         payload: {
             loadJuventusComplete: false,
             juventusObject: null,
+            club: club
         },
     }
 }
 
-export function receiveJuventus(juventusObject) {
+export function receiveJuventus(juventusObject, club) {
     return {
         type: RECEIVE_JUVENTUS,
         payload: {
+            club: club,
             loadJuventusComplete: true,
             juventusObject: juventusObject,
         },

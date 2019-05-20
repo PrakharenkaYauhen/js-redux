@@ -15,6 +15,7 @@ function listenerFillTheCalendar() {
     const currentDate = state.reducerDateChangeCalendar.currentDate;
     const currentDayInTheCalendar = state.reducerDateChangeCalendar.currentDayInTheCalendar;
     const weatherObject = state.reducerWeather.weatherObject;
+    const club = state.reducerJuventus.club;
 
     // console.log(state);
 
@@ -30,7 +31,7 @@ function listenerFillTheCalendar() {
         previousDate = currentDayInTheCalendar;
         // actionGetWeather();
         store.dispatch(actionGetWeather());
-        store.dispatch(actionGetJuventus());
+        store.dispatch(actionGetJuventus(club));
     }
 
     let headerYearMonth = document.getElementById('table-header-year-month');

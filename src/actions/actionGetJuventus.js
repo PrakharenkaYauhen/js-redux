@@ -3,25 +3,51 @@
 import { store } from './../index.js';
 import { REQUEST_JUVENTUS, RECEIVE_JUVENTUS, requestJuventus, receiveJuventus } from './actions.js';
 
-let actionGetJuventus = () => {
+let teamsObject = {
+    'juventus' : {
+        team: 'https://www.thesportsdb.com/api/v1/json/1/searchteams.php?t=Juventus',
+        id: 'https://www.thesportsdb.com/api/v1/json/1/eventsnext.php?id=133676',
+        players: 'https://www.thesportsdb.com/api/v1/json/1/searchplayers.php?t=Juventus'
+    },
+    'ajax' : {
+        team: 'https://www.thesportsdb.com/api/v1/json/1/searchteams.php?t=Ajax',
+        id: 'https://www.thesportsdb.com/api/v1/json/1/eventsnext.php?id=133772',
+        players: 'https://www.thesportsdb.com/api/v1/json/1/searchplayers.php?t=Ajax'
+    },
+    'arsenal' : {
+        team: 'https://www.thesportsdb.com/api/v1/json/1/searchteams.php?t=Arsenal',
+        id: 'https://www.thesportsdb.com/api/v1/json/1/eventsnext.php?id=133604',
+        players: 'https://www.thesportsdb.com/api/v1/json/1/searchplayers.php?t=Arsenal'
+    }
+}
+
+let previousClub;
+
+let actionGetJuventus = (club = 'juventus') => {
 
     console.log('Juventus');
+    console.log(club);
 
     return dispatch => {
 
         console.log('JuventusThunk');
 
         const state = store.getState();
+        // const club = state.reducerJuventus.club;
         const currentJuventusObject = state.reducerJuventus.juventusObject;
 
-        if (currentJuventusObject) {
-            dispatch(receiveJuventus(currentJuventusObject));
+        if (currentJuventusObject && previousClub === club) {
+            console.log(11111111111111111111111111111)
+            dispatch(receiveJuventus(currentJuventusObject, club));
         } else {
-            dispatch(requestJuventus());
+            previousClub = club;
+            dispatch(requestJuventus(club));
             Promise.all([
-                fetch('https://www.thesportsdb.com/api/v1/json/1/searchteams.php?t=Juventus'),
-                fetch('https://www.thesportsdb.com/api/v1/json/1/eventsnext.php?id=133676'),
-                fetch('https://www.thesportsdb.com/api/v1/json/1/searchplayers.php?t=Juventus'),
+                fetch(teamsObject[club].team),
+                fetch(teamsObject[club].id),
+                // fetch('https://www.thesportsdb.com/api/v1/json/1/searchteams.php?t=Arsenal'),
+                // fetch('https://www.thesportsdb.com/api/v1/json/1/eventsnext.php?id=133676'),
+                // fetch('https://www.thesportsdb.com/api/v1/json/1/eventsnext.php?id=133604'),
             ])
                 .then(res => {
                     // console.log(res);
@@ -60,7 +86,7 @@ let actionGetJuventus = () => {
                                 // localStorage.setItem(state.currentLocalStorageKey, JSON.stringify(newTasks))
 
                                 // setTimeout(() => dispatch(receiveJuventus(result)), 5000);
-                                dispatch(receiveJuventus(result));
+                                dispatch(receiveJuventus(result, club));
                             },
                             (error) => {
                                 console.log(error);

@@ -392,6 +392,7 @@ table tr:last-child td:last-child {
     border-radius: 10px;
     box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
     text-align: center;    
+    position: relative;
 }
 
 .juventus__header {
@@ -531,10 +532,18 @@ table tr:last-child td:last-child {
     border: 1px solid rgba(221, 221, 221, 1);
 }
 
-#team-select {
+/* #team-select {
     height: 28px;
     position: absolute;
     top: -0.5px;
     right: -120px;
+    font-size: 18px;
+} */
+
+#team-select {
+    height: 28px;
+    position: absolute;
+    top: 0px;
+    left: 0;
     font-size: 18px;
 }

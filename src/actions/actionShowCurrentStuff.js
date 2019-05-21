@@ -13,7 +13,7 @@ let parse = juventusStuffObject => {
 
     let stuff;
 
-    let positionsArray = ['Goalkeeper', 'Left Back', 'Defender', 'Centre Back', 'Right Back', 'Defensive Midfielder', 'Centre Midfielder', 'Left Wing', 'Right Wing', 'Forward'];
+    let positionsArray = ['Manager', 'Goalkeeper', 'Left Back', 'Defender', 'Centre Back', 'Right Back', 'Midfielder', 'Defensive Midfielder', 'Centre Midfielder', 'Attacking Midfielder', 'Left Wing', 'Right Wing', 'Forward'];
 
     let comparePositions = (a, b) => {
         if (positionsArray.indexOf(a[1]) > positionsArray.indexOf(b[1])) return 1;

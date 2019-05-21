@@ -18,6 +18,11 @@ let teamsObject = {
         team: 'https://www.thesportsdb.com/api/v1/json/1/searchteams.php?t=Arsenal',
         id: 'https://www.thesportsdb.com/api/v1/json/1/eventsnext.php?id=133604',
         players: 'https://www.thesportsdb.com/api/v1/json/1/searchplayers.php?t=Arsenal'
+    },
+    'cska' : {
+        team: 'https://www.thesportsdb.com/api/v1/json/1/searchteams.php?t=CSKA',
+        id: 'https://www.thesportsdb.com/api/v1/json/1/eventsnext.php?id=134120',
+        players: 'https://www.thesportsdb.com/api/v1/json/1/searchplayers.php?t=CSKA'
     }
 }
 
@@ -49,7 +54,7 @@ let actionGetCurrentStuff = () => {
                             for (let i = 0; i < result[0].player.length; i++) {
                                 arrStuff.push([result[0].player[i].strPlayer, result[0].player[i].strPosition, result[0].player[i].dateBorn, result[0].player[i].strNationality]);
                             }
-                            setTimeout(() => dispatch(receiveJuventusStuff(arrStuff)), 5000);
+                            setTimeout(() => dispatch(receiveJuventusStuff(arrStuff)), 2000);
                             // store.dispatch(receiveJuventusStuff(arrStuff));
                         },
                         (error) => {

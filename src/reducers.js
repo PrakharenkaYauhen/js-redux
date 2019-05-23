@@ -55,6 +55,11 @@ let initialState = {
     currentDate: new Date(),
     currentDayInTheCalendar: new Date().getDate(),
     cells: [],
+    modalCalendarVision: false,
+    modalTextariaValue: '',
+    weatherObject: null,
+    weatherIsLoaded: false,
+    weatherError: null,
 }
 
 function reducerCalendar(state = initialState, action) {
@@ -64,6 +69,14 @@ function reducerCalendar(state = initialState, action) {
                 currentDate: action.action.currentDate,
                 currentDayInTheCalendar: action.action.currentDayInTheCalendar,
                 cells: action.action.cells,
+                modalCalendarVision: action.action.modalCalendarVision,
+                modalTextariaValue: action.action.modalTextariaValue,
+            })
+        case FILL_WEATHER:
+            return Object.assign({}, state, {
+                weatherObject: action.action.weatherObject,
+                weatherIsLoaded: action.action.weatherIsLoaded,
+                weatherError: action.action.weatherError,
             })
         default:
             return state

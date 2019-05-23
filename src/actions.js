@@ -9,6 +9,7 @@ export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
 export const ADD_NUMBER = 'ADD_NUMBER'
 
 export const FILL_CALENDAR = 'FILL_CALENDAR'
+export const FILL_WEATHER = 'FILL_WEATHER'
 
 /*
  * other constants
@@ -41,6 +42,11 @@ export function actionAddNumber(number) {
 }
 
 export function actionFillCalendar(action) {
-  console.log(action);
+  // console.log(action);
   return { type: FILL_CALENDAR, action }
+}
+
+export function actionFillWeather(action) {
+  // console.log(action);
+  return { type: FILL_WEATHER, action }
 }

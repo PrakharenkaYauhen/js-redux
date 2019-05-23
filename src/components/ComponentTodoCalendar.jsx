@@ -1,13 +1,9 @@
-import React from 'react';
-import { connect } from 'react-redux'
-// import { ModalWindowContainer } from './ModalWindowContainer.jsx';
-import { TableCellsVision } from './TableCellsVision.jsx';
-import { TableCellsVisionCurrentDate } from './TableCellsVisionCurrentDate.jsx';
-import { TableCellsVisionDatesWithTasks } from './TableCellsVisionDatesWithTasks.jsx';
-
-import ContainerTableCells from '../containers/ContainerTableCells.jsx';
-
 // TodoCalendar Component
+
+import React from 'react';
+import ContainerTableCells from '../containers/ContainerTableCells.jsx';
+import ContainerTableHeaderCells from '../containers/ContainerTableHeaderCells.jsx';
+import ContainerModalWindow from '../containers/ContainerModalWindow.jsx';
 
 function ComponentTodoCalendar({
     currentDayInTheCalendar,
@@ -100,14 +96,20 @@ function ComponentTodoCalendar({
             }
 
             if (firstDayOfTheMonth !== 0) {
-                cells[firstDayOfTheMonth - 1 + currentDayInTheCalendar - 1] = <TableCellsVisionCurrentDate
+                // cells[firstDayOfTheMonth - 1 + currentDayInTheCalendar - 1] = <TableCellsVisionCurrentDate
+                cells[firstDayOfTheMonth - 1 + currentDayInTheCalendar - 1] = <ContainerTableCells
                     currentDayInTheCalendar={currentDayInTheCalendar}
+                    content={currentDayInTheCalendar}
+                    addStyle='todo__table__data_choisen'
                     // onClick={props.onClickCell}
                     // onDoubleClickOpenModal={props.modalCalendarOpenCloseClick}
                     key={firstDayOfTheMonth - 1 + currentDayInTheCalendar - 1} />;
             } else {
-                cells[6 + firstDayOfTheMonth + currentDayInTheCalendar - 1] = <TableCellsVisionCurrentDate
+                // cells[6 + firstDayOfTheMonth + currentDayInTheCalendar - 1] = <TableCellsVisionCurrentDate
+                cells[6 + firstDayOfTheMonth + currentDayInTheCalendar - 1] = <ContainerTableCells
                     currentDayInTheCalendar={currentDayInTheCalendar}
+                    content={currentDayInTheCalendar}
+                    addStyle='todo__table__data_choisen'
                     // onClick={props.onClickCell}
                     // onDoubleClickOpenModal={props.modalCalendarOpenCloseClick}
                     key={6 + firstDayOfTheMonth + currentDayInTheCalendar - 1} />;
@@ -123,36 +125,20 @@ function ComponentTodoCalendar({
         return table;
     }
 
-    // let handleChangeYearMonthClick = (e) => {
-    //     props.onClick(e.target.textContent);
-    // }
-
     return (
         <div className='todo__tasks-add'>
             <h2 className='todo__header2'>Calendar</h2>
             <table className='todo__table'>
                 <thead>
                     <tr>
-                        <th
-                            // onClick={handleChangeYearMonthClick}
-                            className='todo__table__data todo__table__data_header' >left
-                        </th>
-                        <th
-                            // onClick={handleChangeYearMonthClick}
-                            className='todo__table__data todo__table__data_header' >l
-                        </th>
+                        <ContainerTableHeaderCells content='left' />
+                        <ContainerTableHeaderCells content='l' />
                         <th
                             className='todo__table__data todo__table__data_header'
                             colSpan='3'>{monthes[currentMonth] + ' ' + currentYear}
                         </th>
-                        <th
-                            // onClick={handleChangeYearMonthClick}
-                            className='todo__table__data todo__table__data_header' >r
-                        </th>
-                        <th
-                            // onClick={handleChangeYearMonthClick}
-                            className='todo__table__data todo__table__data_header'>right
-                        </th>
+                        <ContainerTableHeaderCells content='r' />
+                        <ContainerTableHeaderCells content='right' />
                     </tr>
                 </thead>
                 <tbody>
@@ -161,17 +147,9 @@ function ComponentTodoCalendar({
                 </tbody>
             </table>
 
-            {/* <ModalWindowContainer modalCalendarVision={modalCalendarVision}
-                modalTextariaValue={modalTextariaValue}
-                currentLocalStorageKey={currentLocalStorageKey}
-                todaysTasks={todaysTasks}
-                onClickCloseModal={(e) => props.modalCalendarOpenCloseClick(e)}
-                onChange={(e) => props.onChange(e)}
-                onReset={(e) => props.onReset(e)} /> */}
+            <ContainerModalWindow />
         </div>
     )
-
-    return (<h1>1</h1>)
 }
 
 export { ComponentTodoCalendar };

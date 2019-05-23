@@ -1,18 +1,19 @@
 import { connect } from 'react-redux'
 import { ComponentTableCells } from '../components/ComponentTableCells'
 import { actionFillCalendar } from '../actions'
-// import TrainingComponent from '../components/TrainingComponent'
-// import { actionAddNumber } from '../actions'
 
 const mapStateToProps = (state, props) => {
-    const { currentDate, cells } = state.reducerCalendar;
+    const { currentDate, currentDayInTheCalendar, cells, modalCalendarVision, modalTextariaValue } = state.reducerCalendar;
     const content = props.content,
         key = props.key,
         addStyle = props.addStyle || '';
 
     return {
         currentDate,
-        cells,
+        currentDayInTheCalendar,
+        cells, 
+        modalCalendarVision, 
+        modalTextariaValue,
         content,
         key,
         addStyle
@@ -39,7 +40,7 @@ const mapStateToProps = (state, props) => {
 // }
 
 const mergeProps = (stateProps, dispatchProps) => {
-    const { currentDate, cells, content, key, addStyle } = stateProps;
+    const { currentDate, currentDayInTheCalendar, cells, modalTextariaValue, content, key, addStyle } = stateProps;
     const { dispatch } = dispatchProps;
 
     return {
@@ -54,6 +55,20 @@ const mergeProps = (stateProps, dispatchProps) => {
                 currentDate: currentDate,
                 currentDayInTheCalendar: currentDayInTheCalendar,
                 cells: cells,
+                modalCalendarVision: false,
+                modalTextariaValue: '',
+            }
+            dispatch(actionFillCalendar(action))
+        },
+
+        onDoubleClick: e => {
+            if (!parseFloat(e.target.textContent)) return;
+            let action = {
+                currentDate: currentDate,
+                currentDayInTheCalendar: currentDayInTheCalendar,
+                cells: cells,
+                modalCalendarVision: true,
+                modalTextariaValue: modalTextariaValue,
             }
             dispatch(actionFillCalendar(action))
         }
@@ -62,6 +77,5 @@ const mergeProps = (stateProps, dispatchProps) => {
 
 // const ContainerTableCells = connect(mapStateToProps, mapDispatchToProps)(ComponentTableCells)
 const ContainerTableCells = connect(mapStateToProps, null, mergeProps)(ComponentTableCells)
-// const ContainerTableCells = connect(mapStateToProps)(ComponentTableCells)
 
 export default ContainerTableCells

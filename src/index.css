@@ -230,7 +230,7 @@ table tr:last-child td:last-child {
     margin: auto;
     background: #ffffff;
     z-index: 1;
-    display: none;
+    /* display: none; */
 }
 
 .modal_visible {
@@ -248,7 +248,7 @@ table tr:last-child td:last-child {
     /* pointer-events: none; */
     max-height: 100vh;
     z-index: 2;
-    display: none;
+    /* display: none; */
 }
 
 .modal__cover_visible {

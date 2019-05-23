@@ -1,19 +1,13 @@
-import React from 'react';
 import { connect } from 'react-redux'
-// import { ModalWindowContainer } from './ModalWindowContainer.jsx';
-// import { TableCellsVision } from './TableCellsVision.jsx';
-// import { TableCellsVisionCurrentDate } from './TableCellsVisionCurrentDate.jsx';
-// import { TableCellsVisionDatesWithTasks } from './TableCellsVisionDatesWithTasks.jsx';
 import { ComponentTodoCalendar } from '../components/ComponentTodoCalendar.jsx';
 
 // TodoCalendar Component
 
 const mapStateToProps = (state) => {
-    console.log(state);
+    // console.log(state);
 
-    const currentDate = state.reducerCalendar.currentDate;
-    const currentDayInTheCalendar = state.reducerCalendar.currentDayInTheCalendar;
-    const cells = state.reducerCalendar.cells;
+    const { currentDate, currentDayInTheCalendar, cells, modalCalendarVision, modalTextariaValue } = state.reducerCalendar;
+
     const currentYear = currentDate.getFullYear();
     const currentMonth = currentDate.getMonth();
     const currentLocalStorageKey = currentYear + ' ' + currentMonth + ' ' + currentDayInTheCalendar;
@@ -24,6 +18,8 @@ const mapStateToProps = (state) => {
         currentDate,
         currentDayInTheCalendar,
         cells,
+        modalCalendarVision,
+        modalTextariaValue,
         currentYear,
         currentMonth,
         currentLocalStorageKey,

@@ -5,6 +5,7 @@ import {
     SET_VISIBILITY_FILTER,
     ADD_NUMBER,
     FILL_CALENDAR,
+    FILL_WEATHER,
     VisibilityFilters,
 } from './actions'
 const { SHOW_ALL } = VisibilityFilters

@@ -107,9 +107,9 @@ tr:first-child .todo__table__data_cells:nth-last-child(2) {
     background: #EFEFEF;
 }
 
-.todo__table__data_tasks {
+/* .todo__table__data_tasks {
     background: LightCyan;
-}
+} */
 
 table {
     border-radius: 10px !important;

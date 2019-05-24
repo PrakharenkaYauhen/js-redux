@@ -3,20 +3,28 @@ import { ComponentTableCells } from '../components/ComponentTableCells'
 import { actionFillCalendar } from '../actions'
 
 const mapStateToProps = (state, props) => {
-    const { currentDate, currentDayInTheCalendar, cells, modalCalendarVision, modalTextariaValue } = state.reducerCalendar;
+    const { currentDate, currentDayInTheCalendar, cells, modalCalendarVision, modalTextariaValue, weatherObject } = state.reducerCalendar;
     const content = props.content,
         key = props.key,
+        game = props.game,
         addStyle = props.addStyle || '';
+
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth();
+    let currentLocalStorageKey = currentYear + ' ' + currentMonth + ' ' + currentDayInTheCalendar;
 
     return {
         currentDate,
         currentDayInTheCalendar,
-        cells, 
-        modalCalendarVision, 
+        cells,
+        modalCalendarVision,
         modalTextariaValue,
+        weatherObject,
         content,
         key,
-        addStyle
+        game,
+        addStyle,
+        currentLocalStorageKey
     }
 }
 
@@ -40,13 +48,16 @@ const mapStateToProps = (state, props) => {
 // }
 
 const mergeProps = (stateProps, dispatchProps) => {
-    const { currentDate, currentDayInTheCalendar, cells, modalTextariaValue, content, key, addStyle } = stateProps;
+    const { currentDate, currentDayInTheCalendar, cells, modalTextariaValue, weatherObject, content, key, addStyle, game, currentLocalStorageKey } = stateProps;
     const { dispatch } = dispatchProps;
 
     return {
         content,
         key,
         addStyle,
+        game,
+        currentLocalStorageKey,
+        weatherObject,
 
         onClick: e => {
             if (!parseFloat(e.target.textContent)) return;

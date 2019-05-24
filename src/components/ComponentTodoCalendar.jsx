@@ -6,6 +6,7 @@ import ContainerTableHeaderCells from '../containers/ContainerTableHeaderCells.j
 import ContainerModalWindow from '../containers/ContainerModalWindow.jsx';
 
 function ComponentTodoCalendar({
+    currentDate,
     currentDayInTheCalendar,
     cells,
     currentYear,
@@ -44,10 +45,7 @@ function ComponentTodoCalendar({
     let nameCalendarDays = () => {
         let rowOfDays = []
         for (let i = 0; i < 7; i++) {
-            // rowOfDays.push(<TableCellsVision content={week[i]} key={i} />);
-            rowOfDays.push(<ContainerTableCells
-                content={week[i]}
-                key={i} />);
+            rowOfDays.push(<ContainerTableCells  content={week[i]} key={i} />);
         }
         return <tr>{rowOfDays}</tr>;
     }
@@ -55,65 +53,64 @@ function ComponentTodoCalendar({
     let filledCalendarDays = () => {
         let table = [];
         for (let i = 0; i < 42; i++) {
-            cells[i] = <ContainerTableCells
-                // cells[i] = <TableCellsVision
-                // onClick={props.onClickCell}
-                content={null}
-                key={i} />
+            cells[i] = <ContainerTableCells content={null} key={i} />
         }
         for (let i = 0; i < daysInThisMonth; i++) {
 
-            if (firstDayOfTheMonth !== 0) {
+            if (firstDayOfTheMonth !== 0) {                
                 if (datesWistTasks.some(number => number === (1 + i))) {
-                    // cells[firstDayOfTheMonth - 1 + i] = <TableCellsVisionDatesWithTasks
+                    let currentLocalStorageKey = currentYear + ' ' + currentMonth + ' ' + (i + 1);
                     cells[firstDayOfTheMonth - 1 + i] = <ContainerTableCells
-                        // onClick={props.onClickCell}
                         content={i + 1}
                         addStyle='todo__table__data_tasks'
+                        game={localStorage.getItem(currentLocalStorageKey) ? JSON.parse(localStorage.getItem(currentLocalStorageKey)).some(i => i.game) : false}
                         key={firstDayOfTheMonth - 1 + i} />;
                 } else {
-                    // cells[firstDayOfTheMonth - 1 + i] = <TableCellsVision
                     cells[firstDayOfTheMonth - 1 + i] = <ContainerTableCells
-                        // onClick={props.onClickCell}
                         content={i + 1}
                         key={firstDayOfTheMonth - 1 + i} />;
                 }
             } else {
                 if (datesWistTasks.some(number => number === (1 + i))) {
+                    let currentLocalStorageKey = currentYear + ' ' + currentMonth + ' ' + (i + 1);
                     cells[6 + i] = <ContainerTableCells
-                        // cells[6 + i] = <TableCellsVisionDatesWithTasks
-                        // onClick={props.onClickCell}
                         content={i + 1}
                         addStyle='todo__table__data_tasks'
+                        game={localStorage.getItem(currentLocalStorageKey) ? JSON.parse(localStorage.getItem(currentLocalStorageKey)).some(i => i.game) : false}
                         key={6 + i} />;
                 } else {
                     cells[6 + i] = <ContainerTableCells
-                        // cells[6 + i] = <TableCellsVision
-                        // onClick={props.onClickCell}
                         content={i + 1}
                         key={6 + i} />;
                 }
             }
 
             if (firstDayOfTheMonth !== 0) {
-                // cells[firstDayOfTheMonth - 1 + currentDayInTheCalendar - 1] = <TableCellsVisionCurrentDate
                 cells[firstDayOfTheMonth - 1 + currentDayInTheCalendar - 1] = <ContainerTableCells
                     currentDayInTheCalendar={currentDayInTheCalendar}
                     content={currentDayInTheCalendar}
-                    addStyle='todo__table__data_choisen'
-                    // onClick={props.onClickCell}
-                    // onDoubleClickOpenModal={props.modalCalendarOpenCloseClick}
+                    addStyle={localStorage.getItem(currentLocalStorageKey) ? 'todo__table__data_tasks todo__table__data_choisen' : 'todo__table__data_choisen'}
+                    game={localStorage.getItem(currentLocalStorageKey) ? JSON.parse(localStorage.getItem(currentLocalStorageKey)).some(i => i.game) : false}
                     key={firstDayOfTheMonth - 1 + currentDayInTheCalendar - 1} />;
             } else {
-                // cells[6 + firstDayOfTheMonth + currentDayInTheCalendar - 1] = <TableCellsVisionCurrentDate
                 cells[6 + firstDayOfTheMonth + currentDayInTheCalendar - 1] = <ContainerTableCells
                     currentDayInTheCalendar={currentDayInTheCalendar}
                     content={currentDayInTheCalendar}
                     addStyle='todo__table__data_choisen'
-                    // onClick={props.onClickCell}
-                    // onDoubleClickOpenModal={props.modalCalendarOpenCloseClick}
                     key={6 + firstDayOfTheMonth + currentDayInTheCalendar - 1} />;
             }
+
+            // if (i === new Date().getDate()
+            //     && +currentDate.getMonth() === new Date().getMonth()
+            //     && +currentDate.getFullYear() === new Date().getFullYear()) {
+            //         console.log(i)
+            //         cells[i] = <ContainerTableCells
+            //         currentDayInTheCalendar={currentDayInTheCalendar}
+            //         content={currentDayInTheCalendar}
+            //         addStyle={localStorage.getItem(currentLocalStorageKey) ? 'todo__table__data_tasks todo__table__data_choisen' : 'todo__table__data_choisen'}
+            //         game={localStorage.getItem(currentLocalStorageKey) ? JSON.parse(localStorage.getItem(currentLocalStorageKey)).some(i => i.game) : false}
+            //         key={firstDayOfTheMonth - 1 + currentDayInTheCalendar - 1} />;
+            //     }
 
         }
         let raws = chunk(cells, 7);

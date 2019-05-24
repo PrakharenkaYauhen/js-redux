@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 // import './WeatherVision.css';
 
 // ComponentWeather
@@ -13,7 +14,7 @@ class ComponentWeather extends React.Component {
     }
 
     render() {
-        // console.log(this.props);
+        console.log(this.props);
         const { currentDayInTheCalendar, weatherError, weatherIsLoaded, weatherObject } = this.props;
 
         let differentInDays = currentDayInTheCalendar - new Date().getDate();
@@ -43,7 +44,9 @@ class ComponentWeather extends React.Component {
 
 
 
-            if (currentDayInTheCalendar === new Date().getDate()) {
+            if (currentDayInTheCalendar === new Date().getDate()
+                && +this.props.currentDate.getMonth() === new Date().getMonth()
+                && +this.props.currentDate.getFullYear() === new Date().getFullYear()) {
                 successContent = <>
                     <p className='weather__paragraph'>Temperature in {weatherObject[0].name} now: {weatherObject[0].main.temp}°C</p>
                     <img className='weather__icon'
@@ -54,7 +57,10 @@ class ComponentWeather extends React.Component {
                     <p className='weather__paragraph'>Humidity: {weatherObject[0].main.humidity}%»</p>
                 </>
             } else {
-                if (positionInObject > 40) {
+                if (positionInObject > 40 ||
+                    +this.props.currentDate.getFullYear() > new Date().getFullYear() || 
+                    ( +this.props.currentDate.getMonth() >new Date().getMonth()) &&
+                    +this.props.currentDate.getFullYear() === new Date().getFullYear()) {
                     successContent = <p className='weather__paragraph'>Sorry, but we don't have an information for so long period of time.</p>
                 } else if (positionInObject < 40 && positionInObject > 2) {
                     successContent = <>
@@ -101,6 +107,14 @@ class ComponentWeather extends React.Component {
         }
     }
 
+}
+
+ComponentWeather.propTypes = {
+    currentDate: PropTypes.object,
+    currentDayInTheCalendar: PropTypes.number,
+    weatherObject: PropTypes.array,
+    weatherIsLoaded: PropTypes.bool,
+    weatherError: PropTypes.object,
 }
 
 export { ComponentWeather };

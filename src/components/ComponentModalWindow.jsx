@@ -1,7 +1,7 @@
-import React from 'react';
-// import './ModalWindow.css';
-
 // ComponentModalWindow
+
+import React from 'react';
+import PropTypes from 'prop-types';
 
 function ComponentModalWindow({ modalCalendarVision, modalTextariaValue, onClickExit, onChange }) {
 
@@ -28,6 +28,13 @@ function ComponentModalWindow({ modalCalendarVision, modalTextariaValue, onClick
         </button>
         </div>
     </div>);
+}
+
+ComponentModalWindow.propTypes = {
+    modalTextariaValue: PropTypes.string,
+    modalCalendarVision: PropTypes.bool,
+    onClickExit: PropTypes.func,
+    onChange: PropTypes.func,
 }
 
 export { ComponentModalWindow };

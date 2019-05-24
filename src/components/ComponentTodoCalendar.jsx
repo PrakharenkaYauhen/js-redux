@@ -1,6 +1,7 @@
 // TodoCalendar Component
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import ContainerTableCells from '../containers/ContainerTableCells.jsx';
 import ContainerTableHeaderCells from '../containers/ContainerTableHeaderCells.jsx';
 import ContainerModalWindow from '../containers/ContainerModalWindow.jsx';
@@ -147,6 +148,19 @@ function ComponentTodoCalendar({
             <ContainerModalWindow />
         </div>
     )
+}
+
+ComponentTodoCalendar.propTypes = {
+        currentDate: PropTypes.object,
+        currentDayInTheCalendar: PropTypes.number,
+        cells: PropTypes.array,
+        modalCalendarVision: PropTypes.bool,
+        modalTextariaValue: PropTypes.string,
+        currentYear: PropTypes.number,
+        currentMonth: PropTypes.number,
+        currentLocalStorageKey: PropTypes.string,
+        firstDayOfTheMonth: PropTypes.number,
+        daysInThisMonth: PropTypes.number
 }
 
 export { ComponentTodoCalendar };

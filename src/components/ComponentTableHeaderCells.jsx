@@ -1,6 +1,7 @@
-import React from 'react';
-
 // ComponentTableHeaderCells
+
+import React from 'react';
+import PropTypes from 'prop-types';
 
 function ComponentTableHeaderCells({ content, onClick }) {
     return (
@@ -12,3 +13,11 @@ function ComponentTableHeaderCells({ content, onClick }) {
 }
 
 export { ComponentTableHeaderCells };
+
+ComponentTableHeaderCells.propTypes = {
+    content: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+    ]),
+    onClick: PropTypes.func,
+}

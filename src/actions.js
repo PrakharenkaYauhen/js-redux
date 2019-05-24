@@ -10,6 +10,7 @@ export const ADD_NUMBER = 'ADD_NUMBER'
 
 export const FILL_CALENDAR = 'FILL_CALENDAR'
 export const FILL_WEATHER = 'FILL_WEATHER'
+export const FILL_JUVENTUS = 'FILL_JUVENTUS'
 
 /*
  * other constants
@@ -49,4 +50,9 @@ export function actionFillCalendar(action) {
 export function actionFillWeather(action) {
   // console.log(action);
   return { type: FILL_WEATHER, action }
+}
+
+export function actionFillJuventus(action) {
+  // console.log(action);
+  return { type: FILL_JUVENTUS, action }
 }

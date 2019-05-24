@@ -6,6 +6,7 @@ import {
     ADD_NUMBER,
     FILL_CALENDAR,
     FILL_WEATHER,
+    FILL_JUVENTUS,
     VisibilityFilters,
 } from './actions'
 const { SHOW_ALL } = VisibilityFilters
@@ -61,6 +62,9 @@ let initialState = {
     weatherObject: null,
     weatherIsLoaded: false,
     weatherError: null,
+    juventusObject: null,
+    juventusIsLoaded: false,
+    juventusError: null,
 }
 
 function reducerCalendar(state = initialState, action) {
@@ -78,6 +82,12 @@ function reducerCalendar(state = initialState, action) {
                 weatherObject: action.action.weatherObject,
                 weatherIsLoaded: action.action.weatherIsLoaded,
                 weatherError: action.action.weatherError,
+            })
+        case FILL_JUVENTUS:
+            return Object.assign({}, state, {
+                juventusObject: action.action.juventusObject,
+                juventusIsLoaded: action.action.juventusIsLoaded,
+                juventusError: action.action.juventusError,
             })
         default:
             return state

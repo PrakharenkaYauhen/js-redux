@@ -48,15 +48,15 @@ const mapStateToProps = (state, props) => {
 // }
 
 const mergeProps = (stateProps, dispatchProps) => {
-    const { currentDate, currentDayInTheCalendar, cells, modalTextariaValue, weatherObject, content, key, addStyle, game, currentLocalStorageKey } = stateProps;
+    const { currentDate, currentDayInTheCalendar, cells, modalTextariaValue, weatherObject, content, key, addStyle, game } = stateProps;
     const { dispatch } = dispatchProps;
 
     return {
+        currentDate,
         content,
         key,
         addStyle,
         game,
-        currentLocalStorageKey,
         weatherObject,
 
         onClick: e => {

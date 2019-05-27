@@ -7,6 +7,9 @@ import {
     FILL_CALENDAR,
     FILL_WEATHER,
     FILL_JUVENTUS,
+    CHANGE_TEAM,
+    JUVENTUS_STUFF,
+    JUVENTUS_STUFF_MODAL,
     VisibilityFilters,
 } from './actions'
 const { SHOW_ALL } = VisibilityFilters
@@ -65,6 +68,11 @@ let initialState = {
     juventusObject: null,
     juventusIsLoaded: false,
     juventusError: null,
+    clubName: 'juventus',
+    juventusStuffObject: null,
+    juventusStuffIsLoaded: false,
+    juventusStuffError: null,
+    juventusStuffModal: false,
 }
 
 function reducerCalendar(state = initialState, action) {
@@ -88,6 +96,20 @@ function reducerCalendar(state = initialState, action) {
                 juventusObject: action.action.juventusObject,
                 juventusIsLoaded: action.action.juventusIsLoaded,
                 juventusError: action.action.juventusError,
+            })
+        case CHANGE_TEAM:
+            return Object.assign({}, state, {
+                clubName: action.action.clubName,
+            })
+        case JUVENTUS_STUFF:
+            return Object.assign({}, state, {
+                juventusStuffObject: action.action.juventusStuffObject,
+                juventusStuffIsLoaded: action.action.juventusStuffIsLoaded,
+                juventusStuffError: action.action.juventusStuffError,
+            })
+        case JUVENTUS_STUFF_MODAL:
+            return Object.assign({}, state, {
+                juventusStuffModal: action.action.juventusStuffModal,
             })
         default:
             return state

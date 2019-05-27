@@ -14,7 +14,8 @@ class ComponentWeather extends React.Component {
     }
 
     render() {
-        console.log(this.props);
+        // console.log(this.props);
+        console.log('%c%s', 'color: green', 'Weather');
         const { currentDayInTheCalendar, weatherError, weatherIsLoaded, weatherObject } = this.props;
 
         let differentInDays = currentDayInTheCalendar - new Date().getDate();

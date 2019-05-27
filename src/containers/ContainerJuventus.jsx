@@ -3,16 +3,33 @@
 import { connect } from 'react-redux'
 import { ComponentJuventus } from '../components/ComponentJuventus'
 import { actionFillJuventus } from '../actions'
+import { actionChangeTeam } from '../actions'
+import { actionJuventusStuff } from '../actions'
+import { actionJuventusStuffModal } from '../actions'
 
 const mapStateToProps = (state) => {
-    const { currentDate, currentDayInTheCalendar, juventusObject, juventusIsLoaded, juventusError } = state.reducerCalendar;
-
-    return {
-        // currentDate,
-        // currentDayInTheCalendar,
+    const { currentDate,
+        currentDayInTheCalendar,
         juventusObject,
         juventusIsLoaded,
-        juventusError
+        juventusError,
+        clubName,
+        juventusStuffObject,
+        juventusStuffIsLoaded,
+        juventusStuffError,
+        juventusStuffModal } = state.reducerCalendar;
+
+    return {
+        currentDate,
+        currentDayInTheCalendar,
+        juventusObject,
+        juventusIsLoaded,
+        juventusError,
+        clubName,
+        juventusStuffObject,
+        juventusStuffIsLoaded,
+        juventusStuffError,
+        juventusStuffModal
     }
 }
 
@@ -39,22 +56,21 @@ let teamsObject = {
     }
 }
 
-let club = 'juventus';
-
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchData: () => {
+        fetchData: clubName => {
 
             Promise.all([
-                fetch(teamsObject[club].team),
-                fetch(teamsObject[club].id),
+                fetch(teamsObject[clubName].team),
+                fetch(teamsObject[clubName].id),
+                fetch('https://www.thesportsdb.com/api/v1/json/1/searchteams.php?t=CSKA'),
             ])
                 .then(res => {
                     // console.log(res);
                     return res.map(juventusObject => juventusObject.json())
                 })
                 .then(res => {
-                    console.log(res);
+                    // console.log(res);
                     Promise.all(res)
                         .then(
                             (result) => {
@@ -78,7 +94,64 @@ const mapDispatchToProps = (dispatch) => {
                         )
                 })
 
-        }
+        },
+
+        fetchTeamsStuff: clubName => {
+
+            Promise.all([
+                fetch(teamsObject[clubName].players),
+            ])
+                .then(res => {
+                    // console.log(res);
+                    return res.map(juventusObject => juventusObject.json())
+                })
+                .then(res => {
+                    // console.log(res);
+                    Promise.all(res)
+                        .then(
+                            (result) => {
+                                console.log(result);
+                                let arrStuff = [];
+                                for (let i = 0; i < result[0].player.length; i++) {
+                                    arrStuff.push([result[0].player[i].strPlayer, result[0].player[i].strPosition, result[0].player[i].dateBorn, result[0].player[i].strNationality]);
+                                }
+
+                                let action = {
+                                    juventusStuffObject: arrStuff,
+                                    juventusStuffIsLoaded: true,
+                                    juventusStuffError: null,
+                                }
+                                setTimeout(() => dispatch(actionJuventusStuff(action)), 4000);
+                                // dispatch(actionJuventusStuff(action))
+                            },
+                            (error) => {
+                                console.log(error);
+                                let action = {
+                                    juventusStuffObject: null,
+                                    juventusStuffIsLoaded: true,
+                                    juventusStuffError: error,
+                                }
+                                dispatch(actionJuventusStuff(action))
+                            }
+                        )
+                })
+
+        },
+
+        onChangeTeam: e => {
+            let action = {
+                clubName: e.target.value,
+            }
+            dispatch(actionChangeTeam(action))
+        },
+
+        onClickStuff: (juventusStuffIsLoaded, juventusStuffModal) => {
+            if (!juventusStuffIsLoaded) return;
+            let action = {
+                juventusStuffModal: juventusStuffModal ? false : true,
+            }
+            dispatch(actionJuventusStuffModal(action))
+        },
     }
 }
 

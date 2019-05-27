@@ -482,13 +482,13 @@ table tr:last-child td:last-child {
     margin: auto;
     background: #ffffff;
     z-index: 1;
-    display: none;
+    /* display: none; */
     overflow: scroll;
 }
 
-.modal__juventus-stuff_visible {
+/* .modal__juventus-stuff_visible {
     display: block;
-}
+} */
 
 
 

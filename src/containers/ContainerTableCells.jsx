@@ -28,25 +28,6 @@ const mapStateToProps = (state, props) => {
     }
 }
 
-// const mapDispatchToProps = (dispatch, props) => {
-//     return {
-//         onClick: e => {
-//             // console.log(e.target);
-//             // console.log(e.target.classList.contains('todo__table__data_tasks'));
-//             console.log(parseFloat(e.target.textContent));
-//             // console.log(state);
-//             if (!parseFloat(e.target.textContent)) return;
-//             let currentDayInTheCalendar = +e.target.textContent;
-//             let action = {
-//                 // currentDate: state.reducerCalendar.currentDate,
-//                 currentDayInTheCalendar: currentDayInTheCalendar,
-//                 // cells: state.reducerCalendar.cells,
-//             }
-//             dispatch(actionFillCalendar(action))
-//         }
-//     }
-// }
-
 const mergeProps = (stateProps, dispatchProps) => {
     const { currentDate, currentDayInTheCalendar, cells, modalTextariaValue, weatherObject, content, key, addStyle, game } = stateProps;
     const { dispatch } = dispatchProps;
@@ -86,7 +67,6 @@ const mergeProps = (stateProps, dispatchProps) => {
     }
 }
 
-// const ContainerTableCells = connect(mapStateToProps, mapDispatchToProps)(ComponentTableCells)
 const ContainerTableCells = connect(mapStateToProps, null, mergeProps)(ComponentTableCells)
 
 export default ContainerTableCells

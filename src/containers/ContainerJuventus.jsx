@@ -63,7 +63,6 @@ const mapDispatchToProps = (dispatch) => {
             Promise.all([
                 fetch(teamsObject[clubName].team),
                 fetch(teamsObject[clubName].id),
-                fetch('https://www.thesportsdb.com/api/v1/json/1/searchteams.php?t=CSKA'),
             ])
                 .then(res => {
                     // console.log(res);
@@ -75,6 +74,66 @@ const mapDispatchToProps = (dispatch) => {
                         .then(
                             (result) => {
                                 console.log(result);
+
+                                // Checking tasks wich don't contain games and take them from localStorage to distinct object, to get them back after clearing of localStorage
+                                let localStorageKeys = Object.keys(localStorage);
+                                let notGamesTasks = [];
+                                for (let i = 0; i < localStorageKeys.length; i++) {
+                                    for (let j = 0; j < JSON.parse(localStorage.getItem(localStorageKeys[i])).length; j++) {
+                                        if (!JSON.parse(localStorage.getItem(localStorageKeys[i]))[j].game) {
+                                            let object = {};
+                                            object.key = localStorageKeys[i];
+                                            object.content = JSON.parse(localStorage.getItem(localStorageKeys[i]))[j];
+                                            notGamesTasks.push(object);
+                                        }
+                                    }
+                                }
+                                // 
+
+                                localStorage.clear();
+
+                                // Adding tasks wich don't contain games again in our localStorage
+                                for (let i = 0; i < notGamesTasks.length; i++) {
+                                    let todaysTasks = JSON.parse(localStorage.getItem(notGamesTasks[i].key));
+                                    let tasksList = todaysTasks ? todaysTasks : [];
+                                    tasksList.push(notGamesTasks[i].content);
+                                    localStorage.setItem(notGamesTasks[i].key, JSON.stringify(tasksList))
+                                }
+                                // 
+
+                                if (result[1].events === null) {
+                                    let action = {
+                                        juventusObject: result,
+                                        juventusIsLoaded: true,
+                                        juventusError: null,
+                                    }
+                                    dispatch(actionFillJuventus(action))
+                                    return;
+                                }
+
+                                outer: for (let i = 0; i < result[1].events.length; i++) {
+                                    let localStorageKeyString = result[1].events[i].dateEvent.split('-');
+                                    let localStorageKey = `${+localStorageKeyString[0]} ${+localStorageKeyString[1] - 1} ${+localStorageKeyString[2]}`;
+                                    let todaysTasks = JSON.parse(localStorage.getItem(localStorageKey));
+
+                                    let tasksList = todaysTasks ? todaysTasks : [];
+                                    let newTask = {};
+
+                                    newTask.id = new Date().getTime();
+                                    newTask.content = `Game: ${result[1].events[i].strEvent}`;
+                                    newTask.game = true;
+
+                                    if (localStorage.getItem(localStorageKey)) {
+                                        for (let i = 0; i < (JSON.parse(localStorage.getItem(localStorageKey))).length; i++) {
+                                            if (JSON.parse(localStorage.getItem(localStorageKey))[i].content === newTask.content) break outer;
+                                        }
+                                    }
+
+                                    tasksList.push(newTask);
+
+                                    localStorage.setItem(localStorageKey, JSON.stringify(tasksList));
+                                }
+
                                 let action = {
                                     juventusObject: result,
                                     juventusIsLoaded: true,
@@ -138,9 +197,10 @@ const mapDispatchToProps = (dispatch) => {
 
         },
 
-        onChangeTeam: e => {
+        onChangeTeam: (e) => {
             let action = {
                 clubName: e.target.value,
+                juventusStuffIsLoaded: false,
             }
             dispatch(actionChangeTeam(action))
         },
@@ -156,6 +216,5 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const ContainerJuventus = connect(mapStateToProps, mapDispatchToProps)(ComponentJuventus);
-// const ContainerJuventus = connect()(ComponentJuventus);
 
 export { ContainerJuventus }

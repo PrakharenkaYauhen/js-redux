@@ -100,6 +100,7 @@ function reducerCalendar(state = initialState, action) {
         case CHANGE_TEAM:
             return Object.assign({}, state, {
                 clubName: action.action.clubName,
+                juventusStuffIsLoaded: action.action.juventusStuffIsLoaded,
             })
         case JUVENTUS_STUFF:
             return Object.assign({}, state, {

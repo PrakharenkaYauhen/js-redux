@@ -13,13 +13,16 @@ class ComponentJuventus extends React.Component {
     componentDidUpdate(prevProps) {
         if (prevProps.clubName !== this.props.clubName) {
             this.props.fetchData(this.props.clubName);
+            this.props.fetchTeamsStuff(this.props.clubName);
         }
     }
 
 
     render() {
         console.log(this.props);
-        const { currentDate,
+        console.log('%c%s', 'color: blue', 'Juventus');
+        const {
+            currentDate,
             currentDayInTheCalendar,
             juventusObject,
             juventusIsLoaded,
@@ -43,9 +46,7 @@ class ComponentJuventus extends React.Component {
         let todayGame;
 
         if (juventusObject && juventusObject[1].events) {
-            for (let i = 0; i < juventusObject[1].events.length; i++) {
-                eventsArray.push(juventusObject[1].events[i].dateEvent);
-            }
+            juventusObject[1].events.map(item => eventsArray.push(item.dateEvent));
         }
 
         let stuffButton = juventusStuffIsLoaded ?
@@ -69,29 +70,27 @@ class ComponentJuventus extends React.Component {
             }
             juventusStuffObject.sort(comparePositions);
 
-            stuff = juventusStuffObject.map((number, i) =>
+            stuff = juventusStuffObject.map((item, i) =>
                 <li key={i}>{`${juventusStuffObject[i][0]} - ${juventusStuffObject[i][1]} - ${juventusStuffObject[i][2]} - ${juventusStuffObject[i][3]}`}</li>
             );
         }
 
 
-
+        let comparedDate =`${currentYear}-${(0 + '' + (currentMonth + 1)).slice(-2)}-${(0 + '' + currentDayInTheCalendar).slice(-2)}`;
+        // eventsArray.filter(item => item === comparedDate)
         for (let i = 0; i < eventsArray.length; i++) {
-            let newArray = eventsArray[i].split('-');
-            if (currentYear === +newArray[0] && (currentMonth + 1) === +newArray[1] && currentDayInTheCalendar === +newArray[2]) {
-                for (let i = 0; i < juventusObject[1].events.length; i++) {
-                    if (juventusObject[1].events[i].dateEvent === newArray.join('-')) {
-                        todayGame = <div className='juventus__today-game'>
-                            <h3 className='juventus__header3'>Today's game:</h3>
-                            <p className='juventus__paragraph'>Date: ${juventusObject[1].events[i].dateEvent}</p>
-                            <p className='juventus__paragraph'>Event: ${juventusObject[1].events[i].strEvent}</p>
-                            <p className='juventus__paragraph'>Tornament: ${juventusObject[1].events[i].strLeague}</p>
-                            <p className='juventus__paragraph'>Round: ${juventusObject[1].events[i].intRound}</p>
-                            <p className='juventus__paragraph'>Time: ${juventusObject[1].events[i].strTime}</p>
-                            {stuffButton}
-                        </div>;
-                    };
-                }
+            if (comparedDate === eventsArray[i]) {
+                todayGame = juventusObject[1].events.filter(item => item.dateEvent === comparedDate).map((item, i) => {
+                    return <div className='juventus__today-game' key={i}>
+                        <h3 className='juventus__header3'>Today's game:</h3>
+                        <p className='juventus__paragraph'>Date: {item.dateEvent}</p>
+                        <p className='juventus__paragraph'>Event: {item.strEvent}</p>
+                        <p className='juventus__paragraph'>Tornament: {item.strLeague}</p>
+                        <p className='juventus__paragraph'>Round: {item.intRound}</p>
+                        <p className='juventus__paragraph'>Time: {item.strTime}</p>
+                        {stuffButton}
+                    </div>;
+                });
                 break;
             } else {
                 todayGame = <div className='juventus__today-game'>
@@ -120,11 +119,12 @@ class ComponentJuventus extends React.Component {
             let teamSearchString = juventusObject[0].teams;
             let teamEventSearchString = juventusObject[1].events;
             let searchNumber = (teamSearchString[1] && teamSearchString[1].idLeague === '4355') ? 1 : 0;
+
             return (
                 <>
                     <h2 className='juventus__header'>Information about FC {teamNameHeader}</h2>
                     <div className='juventus'>
-                        <select name="" id="team-select" onChange={onChangeTeam}>
+                        <select name="" id="team-select" onChange={(e) => onChangeTeam(e)}>
                             <option value="juventus">Juventus</option>
                             <option value="ajax">Ajax</option>
                             <option value="arsenal">Arsenal</option>
@@ -149,10 +149,9 @@ class ComponentJuventus extends React.Component {
                                 </div>
                             </div>
 
-                            {/* <div className='juventus__today-game'></div> */}
                             {todayGame}
 
-                            {juventusObject[1].events ?
+                            {teamEventSearchString ?
                                 <div className='juventus__next-game'>
                                     <h3 className='juventus__header3'>Next game:</h3>
                                     <p className='juventus__paragraph'>Date: {teamEventSearchString[0].dateEvent}</p>
@@ -163,9 +162,7 @@ class ComponentJuventus extends React.Component {
                                 </div> :
                                 <div className='juventus__next-game'>
                                     <h3 className='juventus__header3'>We don't have any information yet</h3>
-                                    <div className='juventus__stuff'>
-                                        <button className='current-stuff' id='current-stuff'>Current stuff <span className='current-stuff__not-available'>(isn't available)</span></button>
-                                    </div>
+                                    {stuffButton}
                                 </div>
                             }
                         </div>
@@ -193,6 +190,10 @@ ComponentJuventus.propTypes = {
     juventusError: PropTypes.object,
     clubName: PropTypes.string,
     onChangeTeam: PropTypes.func,
+    juventusStuffObject: PropTypes.array,
+    juventusStuffIsLoaded: PropTypes.bool,
+    onClickStuff: PropTypes.func,
+    juventusStuffModal: PropTypes.bool
 }
 
 export { ComponentJuventus };

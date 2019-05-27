@@ -50,25 +50,25 @@ function ComponentTableCells({ currentDate, content, onClick, onDoubleClick, add
                 && +currentDate.getMonth() === new Date().getMonth()
                 && +currentDate.getFullYear() === new Date().getFullYear()
                 && <img className='todo__table__sun'
-                    src={"https://openweathermap.org/img/w/" + weatherObject[1].list[9].weather['0'].icon + ".png"}
+                    src={"https://openweathermap.org/img/w/" + weatherObject[1].list[8].weather['0'].icon + ".png"}
                     alt="icon weather" />}
             {weatherObject && content === new Date().getDate() + 2
                 && +currentDate.getMonth() === new Date().getMonth()
                 && +currentDate.getFullYear() === new Date().getFullYear()
                 && <img className='todo__table__sun'
-                    src={"https://openweathermap.org/img/w/" + weatherObject[1].list[17].weather['0'].icon + ".png"}
+                    src={"https://openweathermap.org/img/w/" + weatherObject[1].list[16].weather['0'].icon + ".png"}
                     alt="icon weather" />}
             {weatherObject && content === new Date().getDate() + 3
                 && +currentDate.getMonth() === new Date().getMonth()
                 && +currentDate.getFullYear() === new Date().getFullYear()
                 && <img className='todo__table__sun'
-                    src={"https://openweathermap.org/img/w/" + weatherObject[1].list[25].weather['0'].icon + ".png"}
+                    src={"https://openweathermap.org/img/w/" + weatherObject[1].list[24].weather['0'].icon + ".png"}
                     alt="icon weather" />}
             {weatherObject && content === new Date().getDate() + 4
                 && +currentDate.getMonth() === new Date().getMonth()
                 && +currentDate.getFullYear() === new Date().getFullYear()
                 && <img className='todo__table__sun'
-                    src={"https://openweathermap.org/img/w/" + weatherObject[1].list[33].weather['0'].icon + ".png"}
+                    src={"https://openweathermap.org/img/w/" + weatherObject[1].list[32].weather['0'].icon + ".png"}
                     alt="icon weather" />}
         </td>
     );

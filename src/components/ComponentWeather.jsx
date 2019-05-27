@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-// import './WeatherVision.css';
 
 // ComponentWeather
 
@@ -19,7 +18,7 @@ class ComponentWeather extends React.Component {
         const { currentDayInTheCalendar, weatherError, weatherIsLoaded, weatherObject } = this.props;
 
         let differentInDays = currentDayInTheCalendar - new Date().getDate();
-        let positionInObject = differentInDays * 8 + 1;
+        let positionInObject = differentInDays * 8;
 
         let successContent;
         let dayLengthContent;
@@ -32,9 +31,10 @@ class ComponentWeather extends React.Component {
                 second: 'numeric'
             };
 
-            let hours = Math.floor(weatherObject[2].results.day_length / 60 / 60);
-            let minutes = Math.floor(weatherObject[2].results.day_length / 60 - hours * 60);
-            let seconds = weatherObject[2].results.day_length - hours * 60 * 60 - minutes * 60;
+            let dayLenght = weatherObject[2].results.day_length;
+            let hours = Math.floor(dayLenght / 60 / 60);
+            let minutes = Math.floor(dayLenght / 60 - hours * 60);
+            let seconds = dayLenght - hours * 60 * 60 - minutes * 60;
 
             dayLengthContent = <div>
                 <hr />
@@ -60,8 +60,8 @@ class ComponentWeather extends React.Component {
             } else {
                 if (positionInObject > 40 ||
                     +this.props.currentDate.getFullYear() > new Date().getFullYear() || 
-                    ( +this.props.currentDate.getMonth() >new Date().getMonth()) &&
-                    +this.props.currentDate.getFullYear() === new Date().getFullYear()) {
+                    (( +this.props.currentDate.getMonth() >new Date().getMonth()) &&
+                    +this.props.currentDate.getFullYear() === new Date().getFullYear())) {
                     successContent = <p className='weather__paragraph'>Sorry, but we don't have an information for so long period of time.</p>
                 } else if (positionInObject < 40 && positionInObject > 2) {
                     successContent = <>

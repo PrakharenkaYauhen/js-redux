@@ -47,7 +47,7 @@ const mapDispatchToProps = (dispatch) => {
                     Promise.all(res)
                         .then(
                             (result) => {
-                                // console.log(result);
+                                console.log(result);
                                 let action = {
                                     weatherObject: result,
                                     weatherIsLoaded: true,

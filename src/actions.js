@@ -14,6 +14,7 @@ export const FILL_JUVENTUS = 'FILL_JUVENTUS'
 export const CHANGE_TEAM = 'CHANGE_TEAM'
 export const JUVENTUS_STUFF = 'JUVENTUS_STUFF'
 export const JUVENTUS_STUFF_MODAL = 'JUVENTUS_STUFF_MODAL'
+export const TOGGLE_ADD_TASK_MODAL = 'TOGGLE_ADD_TASK_MODAL'
 
 /*
  * other constants
@@ -73,4 +74,9 @@ export function actionJuventusStuff(action) {
 export function actionJuventusStuffModal(action) {
   // console.log(action);
   return { type: JUVENTUS_STUFF_MODAL, action }
+}
+
+export function actionToggleAddTaskModal(action) {
+  // console.log(action);
+  return { type: TOGGLE_ADD_TASK_MODAL, action }
 }

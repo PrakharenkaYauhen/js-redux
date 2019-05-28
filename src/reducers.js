@@ -10,6 +10,7 @@ import {
     CHANGE_TEAM,
     JUVENTUS_STUFF,
     JUVENTUS_STUFF_MODAL,
+    TOGGLE_ADD_TASK_MODAL,
     VisibilityFilters,
 } from './actions'
 const { SHOW_ALL } = VisibilityFilters
@@ -111,6 +112,11 @@ function reducerCalendar(state = initialState, action) {
         case JUVENTUS_STUFF_MODAL:
             return Object.assign({}, state, {
                 juventusStuffModal: action.action.juventusStuffModal,
+            })
+        case TOGGLE_ADD_TASK_MODAL:
+            return Object.assign({}, state, {
+                modalCalendarVision: action.action.modalCalendarVision,
+                modalTextariaValue: action.action.modalTextariaValue,
             })
         default:
             return state

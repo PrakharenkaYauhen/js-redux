@@ -6,7 +6,7 @@ import { ComponentTodoCalendar } from '../components/ComponentTodoCalendar.jsx';
 const mapStateToProps = (state) => {
     // console.log(state);
 
-    const { currentDate, currentDayInTheCalendar, cells, modalCalendarVision, modalTextariaValue } = state.reducerCalendar;
+    const { currentDate, currentDayInTheCalendar, cells, juventusObject } = state.reducerCalendar;
 
     const currentYear = currentDate.getFullYear();
     const currentMonth = currentDate.getMonth();
@@ -18,8 +18,7 @@ const mapStateToProps = (state) => {
         currentDate,
         currentDayInTheCalendar,
         cells,
-        modalCalendarVision,
-        modalTextariaValue,
+        juventusObject,
         currentYear,
         currentMonth,
         currentLocalStorageKey,

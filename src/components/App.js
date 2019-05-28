@@ -7,6 +7,8 @@ import React from 'react'
 import { TodoCalendar } from '../containers/ContainerTodoCalendar.jsx';
 import { ContainerWeather } from '../containers/ContainerWeather.jsx';
 import { ContainerJuventus } from '../containers/ContainerJuventus.jsx';
+import { ContainerAddTaskToList } from '../containers/ContainerAddTaskToList.jsx';
+import { ContainerTaskList } from '../containers/ContainerTaskList.jsx';
 
 const App = () => (
   <div>
@@ -19,6 +21,8 @@ const App = () => (
     <TodoCalendar />
     <ContainerWeather />
     <ContainerJuventus />
+    <ContainerAddTaskToList/>
+    <ContainerTaskList/>
     </div>
   </div>
 )

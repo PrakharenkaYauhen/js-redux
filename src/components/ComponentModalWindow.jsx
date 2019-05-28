@@ -3,7 +3,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function ComponentModalWindow({ modalCalendarVision, modalTextariaValue, onClickExit, onChange }) {
+function ComponentModalWindow({
+    modalCalendarVision,
+    modalTextariaValue,
+    onClickExit,
+    onChange,
+    currentLocalStorageKey,
+    addTask
+}) {
 
     return modalCalendarVision && (<div className='modal__cover'>
         <div className='modal'>
@@ -12,18 +19,15 @@ function ComponentModalWindow({ modalCalendarVision, modalTextariaValue, onClick
             <textarea className='modal__textarea'
                     ref={input => input && input.focus()}
                     value={modalTextariaValue}
-                    onChange={onChange}
-                     >
+                    onChange={onChange} >
                 </textarea>
             </label>
             <button className='modal__button_enter'
-                // onClick={props.addTask}
-                >
+                onClick={(e) => addTask(currentLocalStorageKey, e)} >
                 add a new task
         </button>
             <button className='modal__button_exit'
-                onClick={onClickExit}
-                >
+                onClick={onClickExit} >
                 x
         </button>
         </div>

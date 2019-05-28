@@ -27,12 +27,23 @@ function ComponentTaskList({
     }
 
     return (
-        <div className='todo__tasks'>
-            {todaysTasks && <><h2 className='todo__header2'>Today's tasks</h2>
-                {todaysTasksList()}</>}
-            {donesTasks && <><h2 className='todo__header2'>Today's done's tasks</h2>
-                {donesTasksList()}</>}
-        </div>
+        (todaysTasks || donesTasks) ?
+            (
+                <div className='todo__tasks'>
+                    {todaysTasks && <><h2 className='todo__header2'>Today's tasks</h2>
+                        {todaysTasksList()}</>}
+                    {donesTasks && <><h2 className='todo__header2'>Today's done's tasks</h2>
+                        {donesTasksList()}</>}
+                </div>
+            ) : (
+                <div className='todo__tasks' hidden></div>
+            )
+        // <div className='todo__tasks'>
+        //     {todaysTasks && <><h2 className='todo__header2'>Today's tasks</h2>
+        //         {todaysTasksList()}</>}
+        //     {donesTasks && <><h2 className='todo__header2'>Today's done's tasks</h2>
+        //         {donesTasksList()}</>}
+        // </div>
     )
 }
 

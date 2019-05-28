@@ -15,6 +15,8 @@ export const CHANGE_TEAM = 'CHANGE_TEAM'
 export const JUVENTUS_STUFF = 'JUVENTUS_STUFF'
 export const JUVENTUS_STUFF_MODAL = 'JUVENTUS_STUFF_MODAL'
 export const TOGGLE_ADD_TASK_MODAL = 'TOGGLE_ADD_TASK_MODAL'
+export const SEARCH_TASK_IN_LIST = 'SEARCH_TASK_IN_LIST'
+export const SEARCHING_TASK_DATA = 'SEARCHING_TASK_DATA'
 
 /*
  * other constants
@@ -79,4 +81,14 @@ export function actionJuventusStuffModal(action) {
 export function actionToggleAddTaskModal(action) {
   // console.log(action);
   return { type: TOGGLE_ADD_TASK_MODAL, action }
+}
+
+export function actionSearchTaskInList(action) {
+  // console.log(action);
+  return { type: SEARCH_TASK_IN_LIST, action }
+}
+
+export function actionSearchingTaskData(action) {
+  // console.log(action);
+  return { type: SEARCHING_TASK_DATA, action }
 }

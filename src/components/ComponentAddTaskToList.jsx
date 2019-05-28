@@ -5,15 +5,27 @@ import PropTypes from 'prop-types';
 
 function ComponentAddTaskToList({
     modalCalendarVision,
+    todaysTasks,
+    donesTasks,
     onToggleModal,
 }) {
 
     return (
-        <div className='todo__tasks'>
-            <div className='modal-button'>
-                <button className='modal-button__button' onClick={(e) => onToggleModal(modalCalendarVision, e)}>add a new task</button>
-            </div>
-        </div>
+        (todaysTasks || donesTasks) ?
+            (
+                <div className='todo__tasks' hidden></div>
+            ) : (
+                <div className='todo__tasks'>
+                    <div className='modal-button'>
+                        <button className='modal-button__button' onClick={(e) => onToggleModal(modalCalendarVision, e)}>add a new task</button>
+                    </div>
+                </div>
+            )
+        // <div className='todo__tasks'>
+        //     <div className='modal-button'>
+        //         <button className='modal-button__button' onClick={(e) => onToggleModal(modalCalendarVision, e)}>add a new task</button>
+        //     </div>
+        // </div>
     )
 }
 

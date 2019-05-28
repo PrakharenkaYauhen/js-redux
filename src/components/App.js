@@ -9,6 +9,7 @@ import { ContainerWeather } from '../containers/ContainerWeather.jsx';
 import { ContainerJuventus } from '../containers/ContainerJuventus.jsx';
 import { ContainerAddTaskToList } from '../containers/ContainerAddTaskToList.jsx';
 import { ContainerTaskList } from '../containers/ContainerTaskList.jsx';
+import { ContainerTaskSearch } from '../containers/ContainerTaskSearch.jsx';
 
 const App = () => (
   <div>
@@ -21,6 +22,7 @@ const App = () => (
     <TodoCalendar />
     <ContainerWeather />
     <ContainerJuventus />
+    <ContainerTaskSearch/>
     <ContainerAddTaskToList/>
     <ContainerTaskList/>
     </div>

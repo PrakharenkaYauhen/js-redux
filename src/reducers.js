@@ -11,6 +11,8 @@ import {
     JUVENTUS_STUFF,
     JUVENTUS_STUFF_MODAL,
     TOGGLE_ADD_TASK_MODAL,
+    SEARCH_TASK_IN_LIST,
+    SEARCHING_TASK_DATA,
     VisibilityFilters,
 } from './actions'
 const { SHOW_ALL } = VisibilityFilters
@@ -74,6 +76,7 @@ let initialState = {
     juventusStuffIsLoaded: false,
     juventusStuffError: null,
     juventusStuffModal: false,
+    searchInputValue: '',
 }
 
 function reducerCalendar(state = initialState, action) {
@@ -117,6 +120,16 @@ function reducerCalendar(state = initialState, action) {
             return Object.assign({}, state, {
                 modalCalendarVision: action.action.modalCalendarVision,
                 modalTextariaValue: action.action.modalTextariaValue,
+            })
+        case SEARCH_TASK_IN_LIST:
+            return Object.assign({}, state, {
+                searchInputValue: action.action.searchInputValue,
+            })
+        case SEARCHING_TASK_DATA:
+            return Object.assign({}, state, {
+                currentDate: action.action.currentDate,
+                currentDayInTheCalendar: action.action.currentDayInTheCalendar,
+                searchInputValue: action.action.searchInputValue,
             })
         default:
             return state

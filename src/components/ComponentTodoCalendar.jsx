@@ -14,7 +14,9 @@ function ComponentTodoCalendar({
     currentMonth,
     currentLocalStorageKey,
     firstDayOfTheMonth,
-    daysInThisMonth }) {
+    daysInThisMonth,
+    weatherObject
+}) {
 
     console.log('%c%s', 'color: red', 'Calendar');
 
@@ -54,14 +56,35 @@ function ComponentTodoCalendar({
         return <tr>{rowOfDays}</tr>;
     }
 
+    // let weatherIcons = [];
+    // if (weatherObject) {
+    //     weatherIcons = weatherObject[1].list.filter((item, i) => {
+    //         if (i % 8 === 0) {
+    //             return item;
+    //         }
+    //     }).map((item, i) => {
+    //         return `https://openweathermap.org/img/w/${item.weather['0'].icon}.png`
+    //     })
+    //     weatherIcons[0] = `https://openweathermap.org/img/w/${weatherObject[0].weather['0'].icon}.png`;
+    // }
+
     let filledCalendarDays = () => {
+        // console.log(weatherIcons);
         let table = [];
         for (let i = 0; i < 42; i++) {
             cells[i] = <ContainerTableCells content={null} key={i} />
         }
         for (let i = 0; i < daysInThisMonth; i++) {
-
             if (firstDayOfTheMonth !== 0) {
+                // console.log(+currentDate.getMonth());
+                // console.log(new Date().getMonth());
+                // console.log(+currentDate.getFullYear());
+                // console.log(new Date().getFullYear());
+                // console.log(i + 1);
+                // console.log(new Date().getDate());
+                // console.log(+currentDate.getMonth() === new Date().getMonth() &&
+                    // +currentDate.getFullYear() === new Date().getFullYear() &&
+                    // i + 1 === new Date().getDate() && weatherIcons[0]);
                 if (datesWistTasks.some(number => number === (1 + i))) {
                     let currentLocalStorageKey = currentYear + ' ' + currentMonth + ' ' + (i + 1);
                     cells[firstDayOfTheMonth - 1 + i] = <ContainerTableCells
@@ -70,6 +93,16 @@ function ComponentTodoCalendar({
                         game={localStorage.getItem(currentLocalStorageKey) ?
                             JSON.parse(localStorage.getItem(currentLocalStorageKey)).some(i => i.game) :
                             false}
+                        // weatherIcon={
+                        //     +currentDate.getMonth() === new Date().getMonth() &&
+                        //     +currentDate.getFullYear() === new Date().getFullYear() &&
+                        //     i + 1 === new Date().getDate() && weatherIcons[0]
+                            //  || 
+                            // ( ((i) === (new Date().getDate() + 1)) && weatherIcons[1]) || 
+                            // ( ((i) === (new Date().getDate() + 2)) && weatherIcons[2]) || 
+                            // ( ((i) === (new Date().getDate() + 3)) && weatherIcons[3]) || 
+                            // ( ((i) === (new Date().getDate() + 4)) && weatherIcons[4]))
+                        // }
                         key={firstDayOfTheMonth - 1 + i} />;
                 } else {
                     cells[firstDayOfTheMonth - 1 + i] = <ContainerTableCells
@@ -95,7 +128,6 @@ function ComponentTodoCalendar({
 
             if (firstDayOfTheMonth !== 0) {
                 cells[firstDayOfTheMonth - 1 + currentDayInTheCalendar - 1] = <ContainerTableCells
-                    currentDayInTheCalendar={currentDayInTheCalendar}
                     content={currentDayInTheCalendar}
                     addStyle={localStorage.getItem(currentLocalStorageKey) ?
                         'todo__table__data_tasks todo__table__data_choisen' :
@@ -106,7 +138,6 @@ function ComponentTodoCalendar({
                     key={firstDayOfTheMonth - 1 + currentDayInTheCalendar - 1} />;
             } else {
                 cells[6 + firstDayOfTheMonth + currentDayInTheCalendar - 1] = <ContainerTableCells
-                    currentDayInTheCalendar={currentDayInTheCalendar}
                     content={currentDayInTheCalendar}
                     addStyle='todo__table__data_choisen'
                     key={6 + firstDayOfTheMonth + currentDayInTheCalendar - 1} />;

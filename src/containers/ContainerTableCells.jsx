@@ -3,7 +3,15 @@ import { ComponentTableCells } from '../components/ComponentTableCells'
 import { actionFillCalendar } from '../actions'
 
 const mapStateToProps = (state, props) => {
-    const { currentDate, currentDayInTheCalendar, cells, modalCalendarVision, modalTextariaValue, weatherObject } = state.reducerCalendar;
+    const {
+        currentDate,
+        currentDayInTheCalendar,
+        cells,
+        modalCalendarVision,
+        modalTextariaValue,
+        weatherObject
+    } = state.reducerCalendar;
+
     const content = props.content,
         key = props.key,
         game = props.game,
@@ -24,12 +32,23 @@ const mapStateToProps = (state, props) => {
         key,
         game,
         addStyle,
-        currentLocalStorageKey
+        currentLocalStorageKey,
     }
 }
 
 const mergeProps = (stateProps, dispatchProps) => {
-    const { currentDate, currentDayInTheCalendar, cells, modalTextariaValue, weatherObject, content, key, addStyle, game } = stateProps;
+    const {
+        currentDate,
+        currentDayInTheCalendar,
+        cells,
+        modalTextariaValue,
+        weatherObject,
+        content,
+        key,
+        addStyle,
+        game,
+    } = stateProps;
+
     const { dispatch } = dispatchProps;
 
     return {

@@ -2,6 +2,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types'
+import { ContainerJuventusModal } from '../containers/ContainerJuventusModal'
+import { ContainerJuventusButtonStuff } from '../containers/ContainerJuventusButtonStuff'
 
 class ComponentJuventus extends React.Component {
 
@@ -19,7 +21,6 @@ class ComponentJuventus extends React.Component {
 
 
     render() {
-        console.log(this.props);
         console.log('%c%s', 'color: blue', 'Juventus');
         const {
             currentDate,
@@ -29,12 +30,9 @@ class ComponentJuventus extends React.Component {
             juventusError,
             clubName,
             onChangeTeam,
-            juventusStuffObject,
-            juventusStuffIsLoaded,
-            onClickStuff,
-            juventusStuffModal } = this.props;
+        } = this.props;
 
-        console.log(juventusObject);
+        // console.log(juventusObject);
 
         let teamNameHeader = clubName === 'cska' ?
             clubName.toUpperCase() :
@@ -49,35 +47,7 @@ class ComponentJuventus extends React.Component {
             juventusObject[1].events.map(item => eventsArray.push(item.dateEvent));
         }
 
-        let stuffButton = juventusStuffIsLoaded ?
-            <div className='juventus__stuff'>
-                <button className='current-stuff' id='current-stuff' onClick={(e) => onClickStuff(juventusStuffIsLoaded, juventusStuffModal, e)}>Current stuff <span className='current-stuff__available'>(is available)</span></button>
-            </div> :
-            <div className='juventus__stuff'>
-                <button className='current-stuff' id='current-stuff' onClick={(e) => onClickStuff(juventusStuffIsLoaded, juventusStuffModal, e)}>Current stuff <span className='current-stuff__not-available'>(isn't available)</span></button>
-            </div>;
-
-
-        let stuff;
-
-        if (juventusStuffIsLoaded) {
-
-            let positionsArray = ['Manager', 'Goalkeeper', 'Left Back', 'Defender', 'Centre Back', 'Right Back', 'Midfielder', 'Defensive Midfielder', 'Centre Midfielder', 'Attacking Midfielder', 'Left Wing', 'Right Wing', 'Forward'];
-
-            let comparePositions = (a, b) => {
-                if (positionsArray.indexOf(a[1]) > positionsArray.indexOf(b[1])) return 1;
-                if (positionsArray.indexOf(a[1]) < positionsArray.indexOf(b[1])) return -1;
-            }
-            juventusStuffObject.sort(comparePositions);
-
-            stuff = juventusStuffObject.map((item, i) =>
-                <li key={i}>{`${juventusStuffObject[i][0]} - ${juventusStuffObject[i][1]} - ${juventusStuffObject[i][2]} - ${juventusStuffObject[i][3]}`}</li>
-            );
-        }
-
-
-        let comparedDate =`${currentYear}-${(0 + '' + (currentMonth + 1)).slice(-2)}-${(0 + '' + currentDayInTheCalendar).slice(-2)}`;
-        // eventsArray.filter(item => item === comparedDate)
+        let comparedDate = `${currentYear}-${(0 + '' + (currentMonth + 1)).slice(-2)}-${(0 + '' + currentDayInTheCalendar).slice(-2)}`;
         for (let i = 0; i < eventsArray.length; i++) {
             if (comparedDate === eventsArray[i]) {
                 todayGame = juventusObject[1].events.filter(item => item.dateEvent === comparedDate).map((item, i) => {
@@ -88,7 +58,7 @@ class ComponentJuventus extends React.Component {
                         <p className='juventus__paragraph'>Tornament: {item.strLeague}</p>
                         <p className='juventus__paragraph'>Round: {item.intRound}</p>
                         <p className='juventus__paragraph'>Time: {item.strTime}</p>
-                        {stuffButton}
+                        <ContainerJuventusButtonStuff/>
                     </div>;
                 });
                 break;
@@ -96,7 +66,7 @@ class ComponentJuventus extends React.Component {
                 todayGame = <div className='juventus__today-game'>
                     <h3 className='juventus__header3'>Today's game:</h3>
                     <p className='juventus__paragraph'>There is no games today</p>
-                    {stuffButton}
+                    <ContainerJuventusButtonStuff/>
                 </div>
             }
         }
@@ -162,18 +132,13 @@ class ComponentJuventus extends React.Component {
                                 </div> :
                                 <div className='juventus__next-game'>
                                     <h3 className='juventus__header3'>We don't have any information yet</h3>
-                                    {stuffButton}
+                                    <ContainerJuventusButtonStuff/>
                                 </div>
                             }
                         </div>
                     </div>
 
-                    {juventusStuffModal && <div className='modal__juventus-stuff'>
-                        <div className='modal__juventus-stuff__stuff'><h3>Current stuff:</h3>
-                            <ul>{stuff}</ul>
-                        </div>
-                        <button className='modal__button_exit' onClick={(e) => onClickStuff(juventusStuffIsLoaded, juventusStuffModal, e)}>x</button>
-                    </div>}
+                    <ContainerJuventusModal />
                 </>
             );
         }
@@ -190,10 +155,6 @@ ComponentJuventus.propTypes = {
     juventusError: PropTypes.object,
     clubName: PropTypes.string,
     onChangeTeam: PropTypes.func,
-    juventusStuffObject: PropTypes.array,
-    juventusStuffIsLoaded: PropTypes.bool,
-    onClickStuff: PropTypes.func,
-    juventusStuffModal: PropTypes.bool
 }
 
 export { ComponentJuventus };

@@ -13,8 +13,10 @@ function ComponentTaskSearch({
     let currentlyTaskListDOM = [];
 
     if (currentlyTaskList) {
-        currentlyTaskListDOM = currentlyTaskList.filter(item => item.content.toLowerCase().indexOf(searchInputValue.toLowerCase()) !== -1 && searchInputValue.length !== 0)
-        .map((item, i) => <li className='search__item' key={i} onClick={itemClick}>{item.content}</li>)
+        currentlyTaskListDOM = currentlyTaskList.filter(item =>
+            item.content.toLowerCase().indexOf(searchInputValue.toLowerCase()) !== -1 && searchInputValue.length !== 0)
+            .map((item, i) =>
+                <li className='search__item' key={i} onClick={itemClick}>{item.content}</li>)
     }
 
     let choiceList = () => {
@@ -34,8 +36,8 @@ function ComponentTaskSearch({
                 <input className='search__input'
                     type="search"
                     value={searchInputValue}
-                    onChange={onSearchChange} 
-                    />
+                    onChange={onSearchChange}
+                />
                 {choiceList()}
             </label>
         </div>
@@ -45,7 +47,6 @@ function ComponentTaskSearch({
 ComponentTaskSearch.propTypes = {
     searchInputValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     currentlyTaskList: PropTypes.array,
-    currentlyTaskListDOM: PropTypes.array,
     itemClick: PropTypes.func,
     onSearchChange: PropTypes.func,
 }

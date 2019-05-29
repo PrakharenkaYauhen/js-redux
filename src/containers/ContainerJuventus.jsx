@@ -5,7 +5,6 @@ import { ComponentJuventus } from '../components/ComponentJuventus'
 import { actionFillJuventus } from '../actions'
 import { actionChangeTeam } from '../actions'
 import { actionJuventusStuff } from '../actions'
-import { actionJuventusStuffModal } from '../actions'
 
 const mapStateToProps = (state) => {
     const { currentDate,
@@ -15,9 +14,8 @@ const mapStateToProps = (state) => {
         juventusError,
         clubName,
         juventusStuffObject,
-        juventusStuffIsLoaded,
         juventusStuffError,
-        juventusStuffModal } = state.reducerCalendar;
+    } = state.reducerCalendar;
 
     return {
         currentDate,
@@ -27,9 +25,7 @@ const mapStateToProps = (state) => {
         juventusError,
         clubName,
         juventusStuffObject,
-        juventusStuffIsLoaded,
         juventusStuffError,
-        juventusStuffModal
     }
 }
 
@@ -203,14 +199,6 @@ const mapDispatchToProps = (dispatch) => {
                 juventusStuffIsLoaded: false,
             }
             dispatch(actionChangeTeam(action))
-        },
-
-        onClickStuff: (juventusStuffIsLoaded, juventusStuffModal) => {
-            if (!juventusStuffIsLoaded) return;
-            let action = {
-                juventusStuffModal: juventusStuffModal ? false : true,
-            }
-            dispatch(actionJuventusStuffModal(action))
         },
     }
 }

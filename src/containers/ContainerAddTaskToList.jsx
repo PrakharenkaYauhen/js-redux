@@ -7,8 +7,7 @@ import { actionToggleAddTaskModal } from '../actions'
 const mapStateToProps = (state) => {
     const {
         currentDate,
-        currentDayInTheCalendar,
-        modalCalendarVision
+        currentDayInTheCalendar
     } = state.reducerCalendar;
 
     let currentYear = currentDate.getFullYear(),
@@ -18,7 +17,6 @@ const mapStateToProps = (state) => {
     let donesTasks = JSON.parse(localStorage.getItem(`${currentLocalStorageKey} done`));
 
     return {
-        modalCalendarVision,
         todaysTasks,
         donesTasks
     }
@@ -26,9 +24,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onToggleModal: modalCalendarVision => {
+        onToggleModal: () => {
             let action = {
-                modalCalendarVision: modalCalendarVision ? false : true,
+                modalCalendarVision: true,
                 modalTextariaValue: '',
             }
             dispatch(actionToggleAddTaskModal(action))

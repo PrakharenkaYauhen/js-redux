@@ -16,7 +16,6 @@ const mapStateToProps = (state) => {
     let donesTasks = JSON.parse(localStorage.getItem(`${currentLocalStorageKey} done`));
 
     return {
-        currentLocalStorageKey,
         todaysTasks,
         donesTasks
     }

@@ -4,7 +4,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from './../containers/Icons/Icon.js';
 import { ICONS } from './../containers/Icons/ConstantsIcons.js';
-// import { ComponentOneTaskInList } from './ComponentOneTaskInList'
 
 function ComponentActionTaskButton({
     currentLocalStorageKey,
@@ -15,32 +14,15 @@ function ComponentActionTaskButton({
     doneTask
 }) {
 
-    let button;
-
-    if (icon === ICONS.CROSS) {
-        button = <button className='todo__tasks__button'
-            onClick={(e) => deleteTask(currentLocalStorageKey, e)}>
-            <Icon icon={icon} size={size} />
-        </button>
-    } else if (icon === ICONS.CHECKMARK) {
-        button = <button className='todo__tasks__button'
-            onClick={(e) => doneTask(currentLocalStorageKey, e)}>
-            <Icon icon={icon} size={size} />
-        </button>
-    } else {
-        button = <button className='todo__tasks__button'
-            onClick={(e) => correctTask(currentLocalStorageKey, e)}>
-            <Icon icon={icon} size={size} />
-        </button>
-    }
+    let neededFunction = (((icon === ICONS.CROSS) && ((e) => deleteTask(currentLocalStorageKey, e))) ||
+        ((icon === ICONS.CHECKMARK) && ((e) => doneTask(currentLocalStorageKey, e))) ||
+        ((e) => correctTask(currentLocalStorageKey, e)));
 
     return (
-        // <button className='todo__tasks__button'
-        // // onClick={props.onClick}
-        // >
-        //     <Icon icon={icon} size={size} />
-        // </button>
-        button
+        <button className='todo__tasks__button'
+            onClick={neededFunction}>
+            <Icon icon={icon} size={size} />
+        </button>
     )
 }
 

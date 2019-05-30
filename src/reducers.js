@@ -5,9 +5,12 @@ import {
     SET_VISIBILITY_FILTER,
     ADD_NUMBER,
     FILL_CALENDAR,
+    CHANGE_DAY,
     FILL_WEATHER,
     FILL_JUVENTUS,
     CHANGE_TEAM,
+    CALENDAR_MODAL,
+    CALENDAR_INPUT_CHANGE_MODAL,
     JUVENTUS_STUFF,
     JUVENTUS_STUFF_MODAL,
     TOGGLE_ADD_TASK_MODAL,
@@ -89,6 +92,10 @@ function reducerCalendar(state = initialState, action) {
                 modalCalendarVision: action.action.modalCalendarVision,
                 modalTextariaValue: action.action.modalTextariaValue,
             })
+        case CHANGE_DAY:
+            return Object.assign({}, state, {
+                currentDayInTheCalendar: action.action.currentDayInTheCalendar,
+            })
         case FILL_WEATHER:
             return Object.assign({}, state, {
                 weatherObject: action.action.weatherObject,
@@ -105,6 +112,15 @@ function reducerCalendar(state = initialState, action) {
             return Object.assign({}, state, {
                 clubName: action.action.clubName,
                 juventusStuffIsLoaded: action.action.juventusStuffIsLoaded,
+            })
+        case CALENDAR_MODAL:
+            return Object.assign({}, state, {
+                modalCalendarVision: action.action.modalCalendarVision,
+                modalTextariaValue: action.action.modalTextariaValue,
+            })
+        case CALENDAR_INPUT_CHANGE_MODAL:
+            return Object.assign({}, state, {
+                modalTextariaValue: action.action.modalTextariaValue,
             })
         case JUVENTUS_STUFF:
             return Object.assign({}, state, {

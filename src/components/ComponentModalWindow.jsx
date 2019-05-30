@@ -6,9 +6,9 @@ import PropTypes from 'prop-types';
 function ComponentModalWindow({
     modalCalendarVision,
     modalTextariaValue,
+    currentLocalStorageKey,
     onClickExit,
     onChange,
-    currentLocalStorageKey,
     addTask
 }) {
 
@@ -26,7 +26,7 @@ function ComponentModalWindow({
                 </label>
                 <button
                     className='modal__button_enter'
-                    onClick={(e) => addTask(currentLocalStorageKey, e)} >
+                    onClick={(e) => addTask(currentLocalStorageKey, modalTextariaValue, e)} >
                     add a new task
                 </button>
                 <button
@@ -41,9 +41,9 @@ function ComponentModalWindow({
 ComponentModalWindow.propTypes = {
     modalTextariaValue: PropTypes.string,
     modalCalendarVision: PropTypes.bool,
+    currentLocalStorageKey: PropTypes.string,
     onClickExit: PropTypes.func,
     onChange: PropTypes.func,
-    currentLocalStorageKey: PropTypes.string,
     addTask: PropTypes.func
 }
 

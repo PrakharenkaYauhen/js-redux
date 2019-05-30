@@ -15,7 +15,8 @@ function ComponentTodoCalendar({
     currentLocalStorageKey,
     firstDayOfTheMonth,
     daysInThisMonth,
-    weatherObject
+    weatherObject,
+    modalTextariaValue,
 }) {
 
     console.log('%c%s', 'color: red', 'Calendar');

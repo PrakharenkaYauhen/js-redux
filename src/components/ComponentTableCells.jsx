@@ -7,12 +7,12 @@ import imgBallURL from './../ball150.png';
 
 function ComponentTableCells({ 
     currentDate, 
+    weatherObject,
+    game, 
     content, 
     onClick, 
     onDoubleClick, 
     addStyle, 
-    game, 
-    weatherObject,
  }) {
 
     return (

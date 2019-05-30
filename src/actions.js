@@ -9,9 +9,12 @@ export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
 export const ADD_NUMBER = 'ADD_NUMBER'
 
 export const FILL_CALENDAR = 'FILL_CALENDAR'
+export const CHANGE_DAY = 'CHANGE_DAY'
 export const FILL_WEATHER = 'FILL_WEATHER'
 export const FILL_JUVENTUS = 'FILL_JUVENTUS'
 export const CHANGE_TEAM = 'CHANGE_TEAM'
+export const CALENDAR_MODAL = 'CALENDAR_MODAL'
+export const CALENDAR_INPUT_CHANGE_MODAL = 'CALENDAR_INPUT_CHANGE_MODAL'
 export const JUVENTUS_STUFF = 'JUVENTUS_STUFF'
 export const JUVENTUS_STUFF_MODAL = 'JUVENTUS_STUFF_MODAL'
 export const TOGGLE_ADD_TASK_MODAL = 'TOGGLE_ADD_TASK_MODAL'
@@ -53,6 +56,11 @@ export function actionFillCalendar(action) {
   return { type: FILL_CALENDAR, action }
 }
 
+export function actionChangeDay(action) {
+  // console.log(action);
+  return { type: CHANGE_DAY, action }
+}
+
 export function actionFillWeather(action) {
   // console.log(action);
   return { type: FILL_WEATHER, action }
@@ -66,6 +74,16 @@ export function actionFillJuventus(action) {
 export function actionChangeTeam(action) {
   // console.log(action);
   return { type: CHANGE_TEAM, action }
+}
+
+export function actionCalendarModal(action) {
+  // console.log(action);
+  return { type: CALENDAR_MODAL, action }
+}
+
+export function actionInputModalChange(action) {
+  // console.log(action);
+  return { type: CALENDAR_INPUT_CHANGE_MODAL, action }
 }
 
 export function actionJuventusStuff(action) {

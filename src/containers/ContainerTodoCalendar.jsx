@@ -1,8 +1,7 @@
-import { connect } from 'react-redux'
-import { ComponentTodoCalendar } from '../components/ComponentTodoCalendar.jsx';
-
 // TodoCalendar Component
 
+import { connect } from 'react-redux'
+import { ComponentTodoCalendar } from '../components/ComponentTodoCalendar.jsx';
 const mapStateToProps = (state) => {
     // console.log(state);
 
@@ -11,7 +10,8 @@ const mapStateToProps = (state) => {
         currentDayInTheCalendar, 
         cells, 
         juventusObject,
-        weatherObject
+        weatherObject,
+        modalTextariaValue,
      } = state.reducerCalendar;
 
     const currentYear = currentDate.getFullYear();
@@ -26,6 +26,7 @@ const mapStateToProps = (state) => {
         cells,
         juventusObject,
         weatherObject,
+        modalTextariaValue,
         currentYear,
         currentMonth,
         currentLocalStorageKey,

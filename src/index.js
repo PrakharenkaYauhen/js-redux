@@ -7,7 +7,7 @@ import thunk from "redux-thunk";
 import todoApp from './reducers'
 import App from './components/App'
 
-import './index.css';
+import './styles/index.css';
 
 const store = createStore(todoApp, applyMiddleware(thunk));
 // const store = createStore(todoApp, applyMiddleware(thunk, logger));

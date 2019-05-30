@@ -2,8 +2,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import imgPinBoardURL from './../pin-board150.png';
-import imgBallURL from './../ball150.png';
+import imgPinBoardURL from './../images/pin-board150.png';
+import imgBallURL from './../images/ball150.png';
 
 function ComponentTableCells({ 
     currentDate, 

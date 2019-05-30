@@ -2,13 +2,14 @@
 
 import React from 'react';
 import PropTypes from 'prop-types'
+import gifPreloader from './../images/free-loader-gif-3.gif';
 
 class ComponentWeather extends React.Component {
     componentDidMount() {
         this.props.fetchData(this.props.currentDate, this.props.currentDayInTheCalendar);
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps) {
         this.props.fetchDaysLengtData(this.props.currentDate, this.props.currentDayInTheCalendar, this.props.weatherObject);
     }
 
@@ -119,6 +120,10 @@ class ComponentWeather extends React.Component {
                 <h2 className='weather__header'>Weather</h2>
                 <div className='weather__content'>
                     <p>Loading...</p>
+                    <img className='preloader'
+                    src={gifPreloader}
+                    alt="preloader gif"
+                />
                 </div>
             </div>;
         } else {

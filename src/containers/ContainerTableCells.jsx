@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { ComponentTableCells } from '../components/ComponentTableCells'
+import ComponentTableCells from '../components/ComponentTableCells'
 import { actionChangeDay } from '../actions'
 import { actionCalendarModal } from '../actions'
 
@@ -36,6 +36,16 @@ const mapDispatchToProps = (dispatch) => {
 
         onDoubleClick: e => {
             if (!parseFloat(e.target.textContent)) return;
+            let action = {
+                modalCalendarVision: true,
+                modalTextariaValue: '',
+            }
+            dispatch(actionCalendarModal(action))
+        },
+
+        onKeyDown: e => {
+            if (!parseFloat(e.target.textContent)) return;
+            if (e.keyCode !== 13) return;
             let action = {
                 modalCalendarVision: true,
                 modalTextariaValue: '',

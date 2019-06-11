@@ -2,109 +2,111 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>Application JS + Redux</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" /> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <title>Application JS + Redux</title>
 </head>
 
 <body>
 
-    <div id="root">
+  <div id="root">
 
-        <h1 class='todo__header1'>To-do list</h1>
-        <div class='todo'>
+    <h1 class='todo__header1'>To-do list</h1>
+    <div class='todo'>
 
-            <div class='todo__tasks-add'>
-                <h2 class='todo__header2'>Calendar</h2>
-                <table class='todo__table' id='todo__table'>
-                    <thead>
-                        <tr>
-                            <th class='todo__table__data todo__table__data_header'>
-                                <span class="icon-undo2"></span></th>
-                            <th class='todo__table__data todo__table__data_header'>
-                                <span class="icon-arrow-left2"></span></th>
-                            <th class='todo__table__data todo__table__data_header' colSpan='3'
-                                id='table-header-year-month'></th>
-                            <th class='todo__table__data todo__table__data_header'>
-                                <span class="icon-arrow-right2"></span></th>
-                            <th class='todo__table__data todo__table__data_header'>
-                                <span class="icon-redo2"></span></th>
-                        </tr>
-                    </thead>
-                    <tbody id='table-body'></tbody>
-                </table>
-            </div>
+      <div class='todo__tasks-add'>
+        <h2 class='todo__header2'>Calendar</h2>
+        <table class='todo__table' id='todo__table'>
+          <thead>
+            <tr>
+              <th class='todo__table__data todo__table__data_header'>
+                <span class="icon-undo2"></span></th>
+              <th class='todo__table__data todo__table__data_header'>
+                <span class="icon-arrow-left2"></span></th>
+              <th class='todo__table__data todo__table__data_header' colSpan='3' id='table-header-year-month'></th>
+              <th class='todo__table__data todo__table__data_header'>
+                <span class="icon-arrow-right2"></span></th>
+              <th class='todo__table__data todo__table__data_header'>
+                <span class="icon-redo2"></span></th>
+            </tr>
+          </thead>
+          <tbody id='table-body'></tbody>
+        </table>
+      </div>
 
-            <div class='weather'>
-                <h2 class='weather__header'>Weather</h2>
-                <div class='weather__content'></div>
-            </div>
+      <div class='weather'>
+        <h2 class='weather__header'>Weather</h2>
+        <div class='weather__content'></div>
+      </div>
 
-            <h2 class='juventus__header'>Information about FC Juventus
-                <!-- <select name="" id="team-select">
+      <h2 class='juventus__header'>Information about FC Juventus
+        <!-- <select name="" id="team-select">
                     <option value="juventus">Juventus</option>
                     <option value="ajax">Ajax</option>
                     <option value="arsenal">Arsenal</option>
                     <option value="cska">CSKA</option>
                 </select> -->
-            </h2>
-            <div class='juventus'>
-                <select name="" id="team-select">
-                    <option value="juventus">Juventus</option>
-                    <option value="ajax">Ajax</option>
-                    <option value="arsenal">Arsenal</option>
-                    <option value="cska">CSKA</option>
-                </select>
-                <div class='juventus__content'></div>
-            </div>
+      </h2>
+      <div class='juventus'>
+        <select name="" id="team-select">
+          <option value="juventus">Juventus</option>
+          <option value="ajax">Ajax</option>
+          <option value="arsenal">Arsenal</option>
+          <option value="cska">CSKA</option>
+        </select>
+        <div class='juventus__content'></div>
+      </div>
 
-            <div class='todo__tasks'>
-                <div class='modal-button'>
-                    <button class='modal-button__button'>add a new task</button>
-                </div>
-            </div>
-
-            <div class='todo__tasks'>
-                <h2 class='todo__header2'>Today's tasks</h2>
-                <ol class='todo__tasks__list' id="todo__tasks__left">
-                    <li class='todo__tasks__item'>
-                        <span>{props.task}</span>
-                        <button class='todo__tasks__button'></button>
-                    </li>
-                </ol>
-
-                <h2 class='todo__header2'>Today's done's tasks</h2>
-                <ul class='todo__tasks__list' id="todo__tasks__done">
-                    <li class='todo__tasks__item'>
-                        <span>{props.task}</span>
-                        <button class='todo__tasks__button todo__tasks__button_delete'></button>
-                        <button class='todo__tasks__button todo__tasks__button_done'></button>
-                        <button class='todo__tasks__button todo__tasks__button_correct'></button>
-                    </li>
-                </ul>
-            </div>
-
+      <div class='todo__tasks'>
+        <div class='modal-button'>
+          <button class='modal-button__button'>add a new task</button>
         </div>
+      </div>
 
-        <div class='modal__cover'>
-            <div class='modal'>
-                <h2 class='modal__header'>Please, add a new task</h2>
-                <label class='modal__textarea_label'>Your new task:
-                    <textarea class='modal__textarea'></textarea>
-                </label>
-                <button class='modal__button_enter'>add a new task</button>
-                <button class='modal__button_exit'>x</button>
-            </div>
+      <div class='todo__tasks'>
+        <h2 class='todo__header2'>Today's tasks</h2>
+        <ol class='todo__tasks__list' id="todo__tasks__left">
+          <li class='todo__tasks__item'>
+            <span>{props.task}</span>
+            <button class='todo__tasks__button'></button>
+          </li>
+        </ol>
 
-            <div class='modal__juventus-stuff'>
-                <div class='modal__juventus-stuff__stuff'></div>
-                <button class='modal__button_exit'>x</button>
-            </div>
-        </div>
+        <h2 class='todo__header2'>Today's done's tasks</h2>
+        <ul class='todo__tasks__list' id="todo__tasks__done">
+          <li class='todo__tasks__item'>
+            <span>{props.task}</span>
+            <button class='todo__tasks__button todo__tasks__button_delete'></button>
+            <button class='todo__tasks__button todo__tasks__button_done'></button>
+            <button class='todo__tasks__button todo__tasks__button_correct'></button>
+          </li>
+        </ul>
+      </div>
+
     </div>
 
+    <div class='modal__cover'>
+      <div class='modal'>
+        <h2 class='modal__header'>Please, add a new task</h2>
+        <label class='modal__textarea_label'>Your new task:
+          <textarea class='modal__textarea'></textarea>
+        </label>
+        <button class='modal__button_enter'>add a new task</button>
+        <button class='modal__button_exit'>x</button>
+      </div>
+
+      <div class='modal__juventus-stuff'>
+        <div class='modal__juventus-stuff__stuff'></div>
+        <button class='modal__button_exit'>x</button>
+      </div>
     </div>
+  </div>
+
+  </div>
 
 </body>
 

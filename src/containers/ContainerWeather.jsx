@@ -1,7 +1,7 @@
 // ContainerWeather
 
 import { connect } from 'react-redux'
-import { ComponentWeather } from '../components/ComponentWeather'
+import ComponentWeather from '../components/ComponentWeather'
 import { actionFillWeather } from '../actions'
 
 const mapStateToProps = (state) => {

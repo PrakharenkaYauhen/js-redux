@@ -1,7 +1,7 @@
 // ContainerJuventusModal
 
 import { connect } from 'react-redux'
-import { ComponentJuventusModal } from '../components/ComponentJuventusModal'
+import ComponentJuventusModal from '../components/ComponentJuventusModal'
 import { actionJuventusStuffModal } from '../actions'
 
 const mapStateToProps = (state) => {

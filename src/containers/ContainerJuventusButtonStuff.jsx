@@ -1,7 +1,7 @@
 // ContainerJuventusButtonStuff
 
 import { connect } from 'react-redux'
-import { ComponentJuventusButtonStuff } from '../components/ComponentJuventusButtonStuff'
+import ComponentJuventusButtonStuff from '../components/ComponentJuventusButtonStuff'
 import { actionJuventusStuffModal } from '../actions'
 
 const mapStateToProps = (state) => {

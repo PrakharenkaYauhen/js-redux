@@ -1,7 +1,7 @@
 // ContainerTaskList
 
 import { connect } from 'react-redux'
-import { ComponentTaskList } from '../components/ComponentTaskList'
+import ComponentTaskList from '../components/ComponentTaskList'
 
 const mapStateToProps = (state) => {
     const {

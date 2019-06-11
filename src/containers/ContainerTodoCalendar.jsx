@@ -1,10 +1,8 @@
 // TodoCalendar Component
 
 import { connect } from 'react-redux'
-import { ComponentTodoCalendar } from '../components/ComponentTodoCalendar.jsx';
+import ComponentTodoCalendar from '../components/ComponentTodoCalendar';
 const mapStateToProps = (state) => {
-    // console.log(state);
-
     const { 
         currentDate, 
         currentDayInTheCalendar, 

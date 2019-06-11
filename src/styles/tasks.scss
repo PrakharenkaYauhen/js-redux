@@ -1,0 +1,77 @@
+.todo__tasks {
+  width: 90%;
+  margin: 20px auto;
+  margin-top: 0;
+  border: 1px solid rgba(221, 221, 221, 1);
+  border-radius: 10px;
+  box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+
+  .modal-button {
+    text-align: center;
+    margin: 20px;
+
+    .modal-button__button {
+      margin: 0 auto;
+    }
+  }
+
+  .todo__header2 {
+    text-align: center;
+  }
+
+  .todo__tasks__list {
+    .todo__tasks__item {
+      width: calc(100% - 50px);
+      margin: 10px 20px;
+      padding: 5px;
+      cursor: grab;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+
+      &:active {
+        cursor: grabbing;
+      }
+
+      .todo__tasks__button {
+        position: relative;
+        width: 20px;
+        height: 20px;
+        border-radius: 10px;
+        float: right;
+        margin: 0 10px;
+        top: 1px;
+        outline: none;
+        opacity: .8;
+
+        &:hover {
+          box-shadow: grey;
+          opacity: 1;
+          outline: none;
+        }
+
+        &:active {
+          box-shadow: 0 3px 3px #575555 inset; 
+          opacity: 1;
+          outline: none;
+        }
+
+        svg {
+          position: absolute;
+          left: 3px;
+          top: 3px;
+        }
+      }
+    }
+  }
+}
+
+// .todo__tasks__button_correct {
+//   background: yellow;
+// }
+
+// .todo__tasks__button_done {
+//   background: green;
+// }
+
+// .todo__tasks__button_delete {
+//   background: red;
+// }

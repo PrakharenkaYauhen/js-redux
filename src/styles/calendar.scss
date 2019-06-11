@@ -1,0 +1,18 @@
+$border-color: rgba(221, 221, 221, 1);
+
+.todo__tasks-add {
+  margin-left: 5%;
+
+  .todo__header2 {
+    margin: 10px auto;
+  }
+
+  .todo__table {
+    margin: 10px 0 20px 0;
+    border: 1px solid $border-color;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-shadow: 0 0 10px 5px $border-color;
+    border-radius: 10px !important;
+  }
+}

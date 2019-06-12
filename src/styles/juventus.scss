@@ -1,0 +1,86 @@
+.juventus__header {
+  margin: 10px auto;
+  position: relative;
+}
+
+.juventus {
+  width: 90%;
+  margin: 20px auto;
+  margin-top: 0;
+  border: 1px solid rgba(221, 221, 221, 1);
+  border-radius: 10px;
+  box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+  text-align: center;    
+  position: relative;
+
+  #team-select {
+    height: 28px;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    font-size: 18px;
+  }
+
+  .juventus__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr auto 1fr;
+    grid-template-areas: "juventus__team  juventus__stadium" "juventus__team  juventus__today-game" "juventus__team  juventus__next-game";
+
+    .juventus__paragraph {
+      font-size: 20px;
+    }
+
+    .juventus__team {
+      grid-area: juventus__team;
+
+      .juventus__badge {
+        height: 50px;
+        display: block;
+        margin: 20px auto;
+        background: #000;
+      }
+    
+      .juventus__logo {
+        max-width: 300px;
+        width: auto;
+      }
+    
+      .juventus__jersey {
+        max-width: 300px;
+        width: auto;
+      }
+    }
+  
+    .juventus__stadium {
+      grid-area: juventus__stadium;
+
+      .juventus__stadium-photo {
+        max-width: 300px;
+        width: auto;
+      }
+    }
+  
+    .juventus__today-game {
+      grid-area: juventus__today-game;
+      border-top: 1px solid rgba(221, 221, 221, 1);
+
+      .juventus__stuff {
+        margin: 10px;
+
+        .current-stuff__available {
+          color: green;
+        }
+      
+        .current-stuff__not-available {
+          color: red;
+        }
+      }
+    }
+  
+    .juventus__next-game {
+      grid-area: juventus__next-game;
+      border-top: 1px solid rgba(221, 221, 221, 1);
+    }
+  }
+}

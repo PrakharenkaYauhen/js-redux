@@ -4,39 +4,41 @@ import { actionFillCalendar } from '../actions'
 
 const mapStateToProps = (state, props) => {
   const { currentDate, cells } = state.reducerCalendar;
-  const content = props.content;
+  const { content, icon } = props;
+  // console.log(children);
 
   return {
     currentDate,
     cells,
-    content
+    content,
+    icon,
   }
 }
 
 const mergeProps = (stateProps, dispatchProps) => {
-  const { cells, content } = stateProps;
+  const { cells, content, icon } = stateProps;
   let { currentDate } = stateProps;
   const { dispatch } = dispatchProps;
 
   return {
     content,
+    icon,
 
     onClick: e => {
-      console.log(e.target.textContent)
-      let data = e.target.textContent;
+      let data = e.currentTarget.getAttribute("content");
 
       switch (data) {
         case 'left':
-          currentDate = new Date(currentDate.getFullYear() - 1, currentDate.getMonth())
+          currentDate = new Date(currentDate.getFullYear() - 1, currentDate.getMonth());
           break;
         case 'right':
-          currentDate = new Date(currentDate.getFullYear() + 1, currentDate.getMonth())
+          currentDate = new Date(currentDate.getFullYear() + 1, currentDate.getMonth());
           break;
         case 'l':
-          currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1)
+          currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1);
           break;
         default:
-          currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1)
+          currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1);
           break;
       }
       let action = {

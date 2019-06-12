@@ -1,10 +1,13 @@
 $border-color: rgba(221, 221, 221, 1);
+$header-color: paleturquoise;
+$choisen-cell-color: #EFEFEF;
 
 .todo__tasks-add {
   margin-left: 5%;
 
   .todo__header2 {
     margin: 10px auto;
+    text-align: center;
   }
 
   .todo__table {
@@ -13,6 +16,127 @@ $border-color: rgba(221, 221, 221, 1);
     border-collapse: separate;
     border-spacing: 0;
     box-shadow: 0 0 10px 5px $border-color;
-    border-radius: 10px !important;
+
+    .todo__table__data {
+      border: 0.5px solid $border-color;
+      padding: 10px;
+      text-align: center;
+      width: 40px;
+      height: 30px;
+    }
+
+    .todo__table__data_header {
+      background: $header-color;
+      position: relative;
+      font-size: 20px;
+      border: 1px solid $header-color;
+    }
+
+    .todo__table__data_cells {
+      cursor: pointer;
+      position: relative;
+
+      .todo__table__sun {
+        position: absolute;
+        width: 18px;
+        right: 0;
+        top: -2px;
+      }
+    
+      .todo__table__pin {
+        position: absolute;
+        width: 13px;
+        left: 0;
+        top: 0;
+      }
+
+      .todo__table__ball {
+        position: absolute;
+        width: 13px;
+        left: 13px;
+        top: 2px;
+      }
+    }
+
+    .todo__table__data_choisen {
+      background: $choisen-cell-color;
+    }
+  }
+}
+
+
+// header of the rable
+
+#table-body tr:first-child td {
+  border: 0.5px solid $header-color;
+  border-bottom: 3px double $header-color;
+}
+
+#table-body tr:nth-child(2) .todo__table__data_cells {
+  border-top: none;
+}
+
+tr:first-child .todo__table__data_cells {
+  cursor: default;
+  color: blue;
+  border: 0.5px solid $header-color;
+  border-bottom: 3px double $header-color;
+
+  &:last-child,
+  &:nth-last-child(2) {
+    color: red;
+  }
+}
+
+
+// round corners in the table
+
+table {
+  border-radius: 10px !important;
+
+  & tr:first-child {
+    /* top-left border-radius */
+    & th:first-child {
+      border-top-left-radius: 10px !important;
+    }
+
+    /* top-right border-radius */
+    & th:last-child {
+      border-top-right-radius: 10px !important;
+    }
+  }
+
+  & tr:last-child {
+    /* bottom-left border-radius */
+    & th:first-child {
+      border-bottom-left-radius: 10px !important;
+    }
+
+    /* bottom-right border-radius */
+    & th:last-child {
+      border-bottom-right-radius: 10px !important;
+    }
+  }
+}
+
+.icon {
+  position: absolute;
+  font-size: 20px;
+  left: 15px;
+  top: 11px;
+  padding: 5px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  cursor: pointer;
+  background: $header-color;
+
+  &:hover {
+    color: #ffffff;
+    border: 1px solid #ffffff;
+  }
+  
+  &:active {
+    color: rgba(221, 221, 221, 1);
+    border: 1px solid rgba(221, 221, 221, 1);
   }
 }

@@ -6,7 +6,7 @@ import { ContainerJuventus } from '../containers/ContainerJuventus.jsx';
 import { ContainerAddTaskToList } from '../containers/ContainerAddTaskToList.jsx';
 import { ContainerTaskList } from '../containers/ContainerTaskList.jsx';
 import { ContainerTaskSearch } from '../containers/ContainerTaskSearch.jsx';
-import { ComponentReduxForm } from '../components/ComponentReduxForm.jsx';
+// import { ComponentReduxForm } from '../components/ComponentReduxForm.jsx';
 
 const App = () => (
     <div>
@@ -18,7 +18,7 @@ const App = () => (
             <ContainerTaskSearch />
             <ContainerAddTaskToList />
             <ContainerTaskList />
-            <ComponentReduxForm />
+            {/* <ComponentReduxForm /> */}
         </div>
     </div>
 )

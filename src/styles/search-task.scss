@@ -50,3 +50,13 @@ $border-color: rgba(221, 221, 221, 1);
     }
   }
 }
+
+/* Extra small devices, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .search {
+    .search__input {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+} 

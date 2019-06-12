@@ -152,19 +152,19 @@ function ComponentTodoCalendar({
       <table className="todo__table">
         <thead>
           <tr>
-            <ContainerTableHeaderCells content="left" />
-            <ContainerTableHeaderCells content="l" />
+            <ContainerTableHeaderCells content="left" icon="UNDO2" />
+            <ContainerTableHeaderCells content="l" icon="ARROWLEFT2" />
             <th
               className="todo__table__data todo__table__data_header"
               colSpan="3"
             >
               {`${monthes[currentMonth]} ${currentYear}`}
             </th>
-            <ContainerTableHeaderCells content="r" />
-            <ContainerTableHeaderCells content="right" />
+            <ContainerTableHeaderCells content="r" icon="ARROWRIGHT2" />
+            <ContainerTableHeaderCells content="right" icon="REDO2" />
           </tr>
         </thead>
-        <tbody>
+        <tbody id="table-body">
           {nameCalendarDays()}
           {filledCalendarDays()}
         </tbody>

@@ -1,7 +1,3 @@
-$border-color: rgba(221, 221, 221, 1);
-$header-color: paleturquoise;
-$choisen-cell-color: #EFEFEF;
-
 .todo__tasks-add {
   margin-left: 5%;
 
@@ -12,12 +8,13 @@ $choisen-cell-color: #EFEFEF;
 
   .todo__table {
     margin: 10px 0 20px 0;
-    border: 1px solid $border-color;
-    border-collapse: separate;
-    border-spacing: 0;
+    border: 1px solid $border-color {
+      collapse: separate;
+      spacing: 0;
+    };
     box-shadow: 0 0 10px 5px $border-color;
 
-    .todo__table__data {
+    &__data {
       border: 0.5px solid $border-color;
       padding: 10px;
       text-align: center;
@@ -25,40 +22,32 @@ $choisen-cell-color: #EFEFEF;
       height: 30px;
     }
 
-    .todo__table__data_header {
+    &__data_header {
       background: $header-color;
       position: relative;
       font-size: 20px;
       border: 1px solid $header-color;
     }
 
-    .todo__table__data_cells {
+    &__data_cells {
       cursor: pointer;
       position: relative;
 
-      .todo__table__sun {
-        position: absolute;
-        width: 18px;
-        right: 0;
-        top: -2px;
-      }
-    
-      .todo__table__pin {
-        position: absolute;
-        width: 13px;
-        left: 0;
-        top: 0;
+      @mixin table-icons($class, $width, $right, $top) {
+        .todo__table__#{$class} {
+          position: absolute;
+          width: $width;
+          right: $right;
+          top: $top;
+        }
       }
 
-      .todo__table__ball {
-        position: absolute;
-        width: 13px;
-        left: 13px;
-        top: 2px;
-      }
+      @include table-icons(sun, 18px, 0, -2px);
+      @include table-icons(pin, 13px, 0, 0);
+      @include table-icons(ball, 13px, 13px, 2px);
     }
 
-    .todo__table__data_choisen {
+    &__data_choisen {
       background: $choisen-cell-color;
     }
   }

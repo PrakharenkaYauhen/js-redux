@@ -95,14 +95,14 @@ table {
     }
   }
 
-  & tr:last-child {
+  & tbody tr:last-child {
     /* bottom-left border-radius */
-    & th:first-child {
+    & td:first-child {
       border-bottom-left-radius: 10px !important;
     }
 
     /* bottom-right border-radius */
-    & th:last-child {
+    & td:last-child {
       border-bottom-right-radius: 10px !important;
     }
   }

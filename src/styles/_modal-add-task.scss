@@ -10,17 +10,9 @@
   z-index: 2;
 
   .modal {
-    border: 1px solid #000000;
-    padding: 10px;
-    position: fixed;
+    @extend %modal-windows;
     width: 50%;
     height: 50%;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    background: #ffffff;
     z-index: 1;
 
     .modal__header {
@@ -42,9 +34,7 @@
     }
 
     .modal__button_exit {
-      position: absolute;
-      right: 20px;
-      top: 20px;
+      @extend %modal-windows-button-exit;
     }
   }
 }

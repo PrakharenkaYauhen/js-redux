@@ -2,9 +2,9 @@
   width: 90%;
   margin: 20px auto;
   margin-top: 0;
-  border: 1px solid rgba(221, 221, 221, 1);
+  border: 1px solid $border-color;
   border-radius: 10px;
-  box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+  box-shadow: 0 0 10px 5px $border-color;
 
   .modal-button {
     text-align: center;
@@ -19,7 +19,7 @@
     text-align: center;
   }
 
-  .todo__tasks__list {
+  &__list {
     .todo__tasks__item {
       width: calc(100% - 50px);
       margin: 10px 20px;
@@ -42,6 +42,14 @@
         outline: none;
         opacity: .8;
 
+        $positions: red, green, yellow;
+
+        @for $number from 1 through 3 {
+          &:nth-child(#{$number + 1}) {
+            background-color: nth($positions, $number);
+          }
+        }
+
         &:hover {
           box-shadow: grey;
           opacity: 1;
@@ -63,15 +71,3 @@
     }
   }
 }
-
-// .todo__tasks__button_correct {
-//   background: yellow;
-// }
-
-// .todo__tasks__button_done {
-//   background: green;
-// }
-
-// .todo__tasks__button_delete {
-//   background: red;
-// }

@@ -125,7 +125,45 @@ table {
   }
   
   &:active {
-    color: rgba(221, 221, 221, 1);
-    border: 1px solid rgba(221, 221, 221, 1);
+    color: $border-color;
+    border: 1px solid $border-color;
   }
 }
+
+
+/* Medium devices (portrait tablets and large phones, 768px and down) */
+@media only screen and (max-width: 768px) {
+  .todo__tasks-add {
+    margin: auto;
+  }
+} 
+
+/* Extra small devices, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .todo__tasks-add {
+    .todo__table__data {
+      padding: 6px;
+    }
+  }
+
+  .icon {
+    left: 10px;
+    top: 5px;
+  }
+} 
+
+/* Extra small devices, 420px and down) */
+@media only screen and (max-width: 420px) {
+  .todo__tasks-add {
+    .todo__table__data {
+      width: 30px;
+      padding: 5px;
+      font-size: 14px;
+    }
+  }
+
+  .icon {
+    left: 5px;
+    top: 4px;
+  }
+} 

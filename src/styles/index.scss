@@ -44,6 +44,8 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin: auto;
+  max-width: 1280px;
 }
 
 .todo__header1 {
@@ -51,4 +53,5 @@ body {
   margin: 10px auto;
   box-shadow: 0 6px 4px -4px rgba(221, 221, 221, 1);
   text-align: center;
+  max-width: 1280px;
 }

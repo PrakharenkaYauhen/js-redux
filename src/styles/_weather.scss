@@ -2,20 +2,20 @@
   width: 30%;
   margin-right: 5%;
 
-  .weather__header {
+  &__header {
     margin: 10px auto;
     text-align: center;
-}
+  }
 
-  .weather__content {
-    box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+  &__content {
+    box-shadow: 0 0 10px 5px $border-color;
     border-radius: 10px;
     text-align: center;
     padding: 15px 10px;
     margin-top: 10px;
   }
 
-  .weather__paragraph {
+  &__paragraph {
     font-size: 20px;
 
     &:first-child {
@@ -27,8 +27,22 @@
     }
   }
 
-  .weather__icon {
+  &__icon {
     position: relative;
     top: 10px;
   }
 }
+
+
+/* Medium devices (landscape tablets, 992px and down) */
+@media only screen and (max-width: 992px) {
+    
+} 
+
+/* Medium devices (portrait tablets and large phones, 768px and down) */
+@media only screen and (max-width: 768px) {
+  .weather {
+    width: 100%;
+    margin: 0 5% 0 5%;
+  }
+} 

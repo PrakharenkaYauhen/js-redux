@@ -1,6 +1,8 @@
 .juventus__header {
+  width: 100%;
   margin: 10px auto;
   position: relative;
+  text-align: center;
 }
 
 .juventus {
@@ -45,12 +47,14 @@
     
       .juventus__logo {
         max-width: 300px;
-        width: auto;
+        width: calc(100% - 20px);
+        padding: 0 10px;
       }
     
       .juventus__jersey {
         max-width: 300px;
-        width: auto;
+        width: calc(100% - 20px);
+        padding: 0 10px;
       }
     }
   
@@ -59,7 +63,8 @@
 
       .juventus__stadium-photo {
         max-width: 300px;
-        width: auto;
+        width: calc(100% - 20px);
+        padding: 0 10px;
       }
     }
   
@@ -83,6 +88,26 @@
     .juventus__next-game {
       grid-area: juventus__next-game;
       border-top: 1px solid rgba(221, 221, 221, 1);
+      padding: 0 10px;
+    }
+  }
+}
+
+
+/* Medium devices (portrait tablets and large phones, 768px and down) */
+@media only screen and (max-width: 768px) {
+  .juventus__content {
+    .juventus__paragraph {
+      font-size: 18px;
+      margin: 14px 5px;
+    }
+
+    .juventus__team {
+      margin-top: 20px;
+    }
+
+    .juventus__header3 {
+      margin: 14px;
     }
   }
 }

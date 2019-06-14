@@ -1,5 +1,6 @@
 $border-color: #dddddd;
 $header-color: #afeeee;
+$white: #ffffff;
 $choisen-cell-color: #EFEFEF;
 $choisen-item-color: #EFEFEF;
 
@@ -14,8 +15,9 @@ $choisen-item-color: #EFEFEF;
   bottom: 0;
   margin: auto;
   padding: 10px;
-  border: 1px solid #000000;
-  border-radius: 10px;
+  border: 1px solid #000000 {
+    radius: 10px;
+  };
   background: #ffffff;
 }
 
@@ -34,11 +36,15 @@ body {
 #root {
   position: relative;
   opacity: 0.9;
-  background: #ffffff;
-  border-top: 1px solid #ffffff;
-  border-bottom: 1px solid #ffffff;
-  min-height: calc(100vh - 2px);
-  min-width: 320px;
+  background: $white;
+  border: {
+    top: 1px solid $white;
+    bottom: 1px solid $white;
+  }
+  min: {
+    height: calc(100vh - 2px);
+    width: 320px;
+  }
 }
 
 .todo {
@@ -51,10 +57,10 @@ body {
 
 .todo__header1 {
   width: 90%;
-  margin: 10px auto;
-  box-shadow: 0 6px 4px -4px rgba(221, 221, 221, 1);
-  text-align: center;
   max-width: 1280px;
+  margin: 10px auto;
+  box-shadow: 0 6px 4px -4px $border-color;
+  text-align: center;
 }
 
 /* Extra small devices, 600px and down) */

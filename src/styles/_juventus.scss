@@ -1,3 +1,9 @@
+%juventus-photos {
+  max-width: 300px;
+  width: calc(100% - 20px);
+  padding: 0 10px;
+}
+
 .juventus__header {
   width: 100%;
   margin: 10px auto;
@@ -7,11 +13,13 @@
 
 .juventus {
   width: 90%;
-  margin: 20px auto;
-  margin-top: 0;
-  border: 1px solid rgba(221, 221, 221, 1);
-  border-radius: 10px;
-  box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+  margin: 20px auto {
+    top: 0;
+  };
+  border: 1px solid $border-color {
+    radius: 10px;
+  };
+  box-shadow: 0 0 10px 5px $border-color;
   text-align: center;    
   position: relative;
 
@@ -27,7 +35,7 @@
     display: grid;
     grid-template: {
       columns: 1fr 1fr;
-      rows: 1fr auto 1fr;
+      rows: auto auto auto;
       areas: "juventus__team  juventus__stadium" "juventus__team  juventus__today-game" "juventus__team  juventus__next-game";
     }
     
@@ -37,6 +45,7 @@
 
     .juventus__team {
       grid-area: juventus__team;
+      border-right: 1px dotted $border-color;
 
       .juventus__badge {
         height: 50px;
@@ -46,15 +55,11 @@
       }
     
       .juventus__logo {
-        max-width: 300px;
-        width: calc(100% - 20px);
-        padding: 0 10px;
+        @extend %juventus-photos;
       }
     
       .juventus__jersey {
-        max-width: 300px;
-        width: calc(100% - 20px);
-        padding: 0 10px;
+        @extend %juventus-photos;
       }
     }
   
@@ -62,15 +67,13 @@
       grid-area: juventus__stadium;
 
       .juventus__stadium-photo {
-        max-width: 300px;
-        width: calc(100% - 20px);
-        padding: 0 10px;
+        @extend %juventus-photos;
       }
     }
   
     .juventus__today-game {
       grid-area: juventus__today-game;
-      border-top: 1px solid rgba(221, 221, 221, 1);
+      border-top: 1px dotted $border-color;
 
       .juventus__stuff {
         margin: 10px;
@@ -89,7 +92,7 @@
   
     .juventus__next-game {
       grid-area: juventus__next-game;
-      border-top: 1px solid rgba(221, 221, 221, 1);
+      border-top: 1px dotted $border-color;
       padding: 0 10px;
 
       .juventus__stuff {
@@ -141,6 +144,13 @@
       columns: auto;
       rows: auto auto auto auto;
       areas: "juventus__team" "juventus__stadium" "juventus__today-game" "juventus__next-game";
+    }
+
+    .juventus__team {
+      border: {
+        right: none;
+        bottom: 1px dotted $border-color;
+      }
     }
   }
 } 

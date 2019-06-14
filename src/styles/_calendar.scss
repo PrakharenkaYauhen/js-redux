@@ -57,19 +57,18 @@
 // header of the rable
 
 #table-body tr:first-child td {
-  border: 0.5px solid $header-color;
-  border-bottom: 3px double $header-color;
+  border: 0.5px solid $header-color {
+    bottom: 3px double $header-color;
+  };
 }
 
-#table-body tr:nth-child(2) .todo__table__data_cells {
+#table-body tr:nth-child(2) td {
   border-top: none;
 }
 
 tr:first-child .todo__table__data_cells {
   cursor: default;
   color: blue;
-  border: 0.5px solid $header-color;
-  border-bottom: 3px double $header-color;
 
   &:last-child,
   &:nth-last-child(2) {
@@ -114,8 +113,9 @@ table {
   left: 15px;
   top: 11px;
   padding: 5px;
-  border: 1px solid #000000;
-  border-radius: 5px;
+  border: 1px solid #000000 {
+    radius: 5px;
+  };
   cursor: pointer;
   background: $header-color;
 

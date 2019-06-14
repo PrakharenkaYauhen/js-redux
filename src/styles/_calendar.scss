@@ -140,6 +140,10 @@ table {
 
 /* Extra small devices, 600px and down) */
 @media only screen and (max-width: 600px) {
+  .todo__header2 {
+    font-size: 20px;
+  }
+
   .todo__tasks-add {
     .todo__table__data {
       padding: 6px;

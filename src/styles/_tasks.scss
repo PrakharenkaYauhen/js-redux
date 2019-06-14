@@ -21,9 +21,11 @@
 
   &__list {
     .todo__tasks__item {
-      width: calc(100% - 50px);
-      margin: 10px 20px;
+      position: relative;
+      width: calc(100% - 150px);
+      margin: 10px 20px 10px 0;
       padding: 5px;
+      padding-right: 100px;
       cursor: grab;
       box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
 
@@ -32,13 +34,12 @@
       }
 
       .todo__tasks__button {
-        position: relative;
+        position: absolute;
         width: 20px;
         height: 20px;
         border-radius: 10px;
-        float: right;
         margin: 0 10px;
-        top: 1px;
+        bottom: 3px;
         outline: none;
         opacity: .8;
 
@@ -47,6 +48,7 @@
         @for $number from 1 through 3 {
           &:nth-child(#{$number + 1}) {
             background-color: nth($positions, $number);
+            right: 30px * ($number - 1);
           }
         }
 
@@ -71,3 +73,17 @@
     }
   }
 }
+
+
+/* Extra small devices, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .todo__tasks {
+    &__list {
+      .todo__tasks__item {
+        width: calc(100% - 55px);
+        padding-right: 5px;
+        padding-bottom: 25px;
+      }
+    }
+  }
+} 

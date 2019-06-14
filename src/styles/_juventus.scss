@@ -75,12 +75,14 @@
       .juventus__stuff {
         margin: 10px;
 
-        .current-stuff__available {
-          color: green;
-        }
-      
-        .current-stuff__not-available {
-          color: red;
+        .current-stuff {
+          &__available {
+            color: green;
+          }
+        
+          &__not-available {
+            color: red;
+          }
         }
       }
     }
@@ -89,6 +91,22 @@
       grid-area: juventus__next-game;
       border-top: 1px solid rgba(221, 221, 221, 1);
       padding: 0 10px;
+
+      .juventus__stuff {
+        margin: 10px;
+
+        .current-stuff {
+          margin: 10px;
+
+          &__available {
+            color: green;
+          }
+        
+          &__not-available {
+            color: red;
+          }
+        }
+      }
     }
   }
 }
@@ -111,3 +129,18 @@
     }
   }
 }
+
+/* Extra small devices, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .juventus__header {
+    font-size: 20px;
+  }
+
+  .juventus__content {
+    grid-template: {
+      columns: auto;
+      rows: auto auto auto auto;
+      areas: "juventus__team" "juventus__stadium" "juventus__today-game" "juventus__next-game";
+    }
+  }
+} 

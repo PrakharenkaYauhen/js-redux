@@ -9,3 +9,15 @@
     @extend %modal-windows-button-exit;
   }
 }
+
+/* Extra small devices, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .modal__juventus-stuff {
+    width: 90%;
+    height: 90%;
+
+    ul {
+      padding-left: 20px;
+    }
+  }
+} 

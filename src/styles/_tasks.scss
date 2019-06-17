@@ -73,16 +73,9 @@
           top: 3px;
         }
       }
-    }
-  }
-}
 
-
-/* Extra small devices, 600px and down) */
-@media only screen and (max-width: 600px) {
-  .todo__tasks {
-    &__list {
-      .todo__tasks__item {
+      /* Extra small devices, 600px and down) */
+      @media (max-width: 600px) {
         width: calc(100% - 55px);
         padding: {
           right: 5px;
@@ -91,4 +84,4 @@
       }
     }
   }
-} 
+}

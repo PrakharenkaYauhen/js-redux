@@ -9,6 +9,10 @@
   margin: 10px auto;
   position: relative;
   text-align: center;
+
+  @media (max-width: 600px) {
+    font-size: 20px;
+  }
 }
 
 .juventus {
@@ -35,12 +39,17 @@
     display: grid;
     grid-template: {
       columns: 1fr 1fr;
-      rows: auto auto auto;
+      rows: 1fr auto 1fr;
       areas: "juventus__team  juventus__stadium" "juventus__team  juventus__today-game" "juventus__team  juventus__next-game";
     }
     
     .juventus__paragraph {
       font-size: 20px;
+
+      @media (max-width: 768px) {
+        font-size: 18px;
+        margin: 14px 5px;
+      }
     }
 
     .juventus__team {
@@ -60,6 +69,17 @@
     
       .juventus__jersey {
         @extend %juventus-photos;
+      }
+
+      @media (max-width: 768px) {
+        margin-top: 20px;
+      }
+
+      @media (max-width: 600px) {
+        border: {
+          right: none;
+          bottom: 1px dotted $border-color;
+        }
       }
     }
   
@@ -111,6 +131,14 @@
         }
       }
     }
+
+    @media (max-width: 600px) {
+      grid-template: {
+        columns: auto;
+        rows: auto auto auto auto;
+        areas: "juventus__team" "juventus__stadium" "juventus__today-game" "juventus__next-game";
+      }
+    }
   }
 }
 
@@ -118,39 +146,8 @@
 /* Medium devices (portrait tablets and large phones, 768px and down) */
 @media only screen and (max-width: 768px) {
   .juventus__content {
-    .juventus__paragraph {
-      font-size: 18px;
-      margin: 14px 5px;
-    }
-
-    .juventus__team {
-      margin-top: 20px;
-    }
-
     .juventus__header3 {
       margin: 14px;
     }
   }
 }
-
-/* Extra small devices, 600px and down) */
-@media only screen and (max-width: 600px) {
-  .juventus__header {
-    font-size: 20px;
-  }
-
-  .juventus__content {
-    grid-template: {
-      columns: auto;
-      rows: auto auto auto auto;
-      areas: "juventus__team" "juventus__stadium" "juventus__today-game" "juventus__next-game";
-    }
-
-    .juventus__team {
-      border: {
-        right: none;
-        bottom: 1px dotted $border-color;
-      }
-    }
-  }
-} 

@@ -4,6 +4,10 @@
   .todo__header2 {
     margin: 10px auto;
     text-align: center;
+
+    @media (max-width: 600px) {
+      font-size: 20px;
+    }
   }
 
   .todo__table {
@@ -20,6 +24,16 @@
       text-align: center;
       width: 40px;
       height: 30px;
+
+      @media (max-width: 600px) {
+        padding: 6px;
+      }
+
+      @media (max-width: 420px) {
+        width: 30px;
+        padding: 5px;
+        font-size: 14px;
+      }
     }
 
     &__data_header {
@@ -50,6 +64,10 @@
     &__data_choisen {
       background: $choisen-cell-color;
     }
+  }
+
+  @media (max-width: 768px) {
+    margin: auto;
   }
 }
 
@@ -128,46 +146,14 @@ table {
     color: $border-color;
     border: 1px solid $border-color;
   }
-}
 
-
-/* Medium devices (portrait tablets and large phones, 768px and down) */
-@media only screen and (max-width: 768px) {
-  .todo__tasks-add {
-    margin: auto;
-  }
-} 
-
-/* Extra small devices, 600px and down) */
-@media only screen and (max-width: 600px) {
-  .todo__header2 {
-    font-size: 20px;
-  }
-
-  .todo__tasks-add {
-    .todo__table__data {
-      padding: 6px;
-    }
-  }
-
-  .icon {
+  @media (max-width: 600px) {
     left: 10px;
     top: 5px;
   }
-} 
 
-/* Extra small devices, 420px and down) */
-@media only screen and (max-width: 420px) {
-  .todo__tasks-add {
-    .todo__table__data {
-      width: 30px;
-      padding: 5px;
-      font-size: 14px;
-    }
-  }
-
-  .icon {
+  @media (max-width: 420px) {
     left: 5px;
     top: 4px;
   }
-} 
+}

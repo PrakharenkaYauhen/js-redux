@@ -38,34 +38,17 @@
     .modal__button_exit {
       @extend %modal-windows-button-exit;
     }
-  }
-}
 
-/* Medium devices (portrait tablets and large phones, 768px and down) */
-@media only screen and (max-width: 768px) {
-  .modal__cover {
-    .modal {
+    @media (max-width: 768px) {
       width: 65%;
     }
-  }
-} 
 
-
-/* Extra small devices, 600px and down) */
-@media only screen and (max-width: 600px) {
-  .modal__cover {
-    .modal {
+    @media (max-width: 600px) {
       width: 80%;
     }
-  }
-} 
 
-
-/* Extra small devices, 420px and down) */
-@media only screen and (max-width: 420px) {
-  .modal__cover {
-    .modal {
+    @media (max-width: 420px) {
       width: 90%;
     }
   }
-} 
+}

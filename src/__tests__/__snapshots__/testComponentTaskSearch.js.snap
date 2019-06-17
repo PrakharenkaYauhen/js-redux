@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="search"
+>
+  <label
+    className="search__label"
+    htmlFor="search__input"
+  >
+    <span
+      className="search__span"
+    >
+      Enter a serching task:
+    </span>
+    <input
+      className="search__input"
+      id="search__input"
+      tabIndex="50"
+      type="search"
+      value=""
+    />
+  </label>
+</div>
+`;

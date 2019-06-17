@@ -8,6 +8,7 @@ export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
 
 export const ADD_NUMBER = 'ADD_NUMBER'
 
+export const TASK_LIST_CHANGE = 'TASK_LIST_CHANGE'
 export const FILL_CALENDAR = 'FILL_CALENDAR'
 export const CHANGE_DAY = 'CHANGE_DAY'
 export const FILL_WEATHER = 'FILL_WEATHER'
@@ -34,6 +35,10 @@ export const VisibilityFilters = {
 /*
  * action creators
  */
+
+export function tasksListChange(action) {
+  return { type: TASK_LIST_CHANGE, action }
+}
 
 export function addTodo(text) {
   return { type: ADD_TODO, text }

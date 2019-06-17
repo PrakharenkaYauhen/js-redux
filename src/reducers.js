@@ -5,6 +5,7 @@ import {
   TOGGLE_TODO,
   SET_VISIBILITY_FILTER,
   ADD_NUMBER,
+  TASK_LIST_CHANGE,
   FILL_CALENDAR,
   CHANGE_DAY,
   FILL_WEATHER,
@@ -63,7 +64,21 @@ function addNumber(state = 0, action) {
   }
 }
 
+let initialTaskList = {};
+
+if (localStorage) {
+  for (let key in localStorage) {
+    if (localStorage.getItem(key)) {
+      let content = JSON.parse(localStorage.getItem(key));
+      initialTaskList[key] = content;
+    }
+  }
+} else {
+  initialTaskList = {};
+}
+
 let initialState = {
+  tasksList: initialTaskList,
   currentDate: new Date(),
   currentDayInTheCalendar: new Date().getDate(),
   cells: [],
@@ -93,6 +108,11 @@ function reducerCalendar(state = initialState, action) {
         modalCalendarVision: action.action.modalCalendarVision,
         modalTextariaValue: action.action.modalTextariaValue,
       })
+    case TASK_LIST_CHANGE:
+      // console.log(action);
+      return Object.assign({}, state, {
+        tasksList: action.action.tasksList,
+      })
     case CHANGE_DAY:
       // console.log(state);
       return Object.assign({}, state, {
@@ -116,12 +136,14 @@ function reducerCalendar(state = initialState, action) {
         juventusStuffIsLoaded: action.action.juventusStuffIsLoaded,
       })
     case CALENDAR_MODAL:
+        // console.log(state);
       return Object.assign({}, state, {
         modalCalendarVision: action.action.modalCalendarVision,
         modalTextariaValue: action.action.modalTextariaValue,
       })
     case CALENDAR_INPUT_CHANGE_MODAL:
       return Object.assign({}, state, {
+        tasksList: action.action.tasksList,
         modalTextariaValue: action.action.modalTextariaValue,
       })
     case JUVENTUS_STUFF:

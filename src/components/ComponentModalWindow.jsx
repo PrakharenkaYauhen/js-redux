@@ -40,7 +40,7 @@ function ComponentModalWindow({
           tabIndex="42"
           type="button"
           className="modal__button_enter"
-          onClick={e => addTask(currentLocalStorageKey, modalTextariaValue, e)}
+          onClick={e => addTask(currentLocalStorageKey, modalTextariaValue, textariaInput, e)}
         >
           {'add a new task'}
         </button>

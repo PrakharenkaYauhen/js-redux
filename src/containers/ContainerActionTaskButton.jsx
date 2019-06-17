@@ -1,8 +1,8 @@
 // ContainerActionTaskButton
 
-import { connect } from 'react-redux'
-import ComponentActionTaskButton from '../components/ComponentActionTaskButton'
-import { actionToggleAddTaskModal } from '../actions'
+import { connect } from 'react-redux';
+import ComponentActionTaskButton from '../components/ComponentActionTaskButton';
+import changeTaskInList from '../functions/changeTaskInList';
 
 const mapStateToProps = (state, props) => {
   const {
@@ -57,11 +57,7 @@ const mapDispatchToProps = (dispatch) => {
         }
       }
 
-      let action = {
-        modalCalendarVision: false,
-        modalTextariaValue: '',
-      }
-      dispatch(actionToggleAddTaskModal(action))
+      changeTaskInList(dispatch);
     },
 
     deleteTask: (currentLocalStorageKey, e) => {
@@ -94,11 +90,7 @@ const mapDispatchToProps = (dispatch) => {
         }
       }
 
-      let action = {
-        modalCalendarVision: false,
-        modalTextariaValue: '',
-      }
-      dispatch(actionToggleAddTaskModal(action))
+      changeTaskInList(dispatch);
     },
 
     doneTask: (currentLocalStorageKey, e) => {
@@ -143,11 +135,7 @@ const mapDispatchToProps = (dispatch) => {
         localStorage.setItem(currentLocalStorageKey, JSON.stringify(currentlyTaskList));
       }
 
-      let action = {
-        modalCalendarVision: false,
-        modalTextariaValue: '',
-      }
-      dispatch(actionToggleAddTaskModal(action))
+      changeTaskInList(dispatch);
     }
   }
 }

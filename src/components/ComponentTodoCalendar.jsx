@@ -7,7 +7,8 @@ import ContainerTableHeaderCells from '../containers/ContainerTableHeaderCells';
 import ContainerModalWindow from '../containers/ContainerModalWindow';
 
 function ComponentTodoCalendar({
-  currentDate,
+  tasksList,
+  // currentDate,
   currentDayInTheCalendar,
   cells,
   currentYear,
@@ -15,10 +16,11 @@ function ComponentTodoCalendar({
   currentLocalStorageKey,
   firstDayOfTheMonth,
   daysInThisMonth,
-  weatherObject,
-  modalTextariaValue,
+  // weatherObject,
+  // modalTextariaValue,
 }) {
   console.log('%c%s', 'color: red', 'Calendar');
+  // console.log(tasksList);
 
   const week = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
   const monthes = ['January', 'February', 'March', 'April', 'May', 'June',
@@ -82,8 +84,10 @@ function ComponentTodoCalendar({
             <ContainerTableCells
               content={i + 1}
               addStyle="todo__table__data_tasks"
-              game={localStorage.getItem(currentLocalStorageKey)
-                ? JSON.parse(localStorage.getItem(currentLocalStorageKey)).some(i => i.game)
+              // game={localStorage.getItem(currentLocalStorageKey)
+              game={tasksList[currentLocalStorageKey]
+                // ? JSON.parse(localStorage.getItem(currentLocalStorageKey)).some(i => i.game)
+                ? tasksList[currentLocalStorageKey].some(i => i.game)
                 : false}
               key={firstDayOfTheMonth - 1 + i}
             />);
@@ -101,8 +105,8 @@ function ComponentTodoCalendar({
             <ContainerTableCells
               content={i + 1}
               addStyle="todo__table__data_tasks"
-              game={localStorage.getItem(currentLocalStorageKey)
-                ? JSON.parse(localStorage.getItem(currentLocalStorageKey)).some(i => i.game)
+              game={tasksList[currentLocalStorageKey]
+                ? tasksList[currentLocalStorageKey].some(i => i.game)
                 : false}
               key={6 + i}
             />);
@@ -119,11 +123,11 @@ function ComponentTodoCalendar({
         cells[firstDayOfTheMonth - 1 + currentDayInTheCalendar - 1] = (
           <ContainerTableCells
             content={currentDayInTheCalendar}
-            addStyle={localStorage.getItem(currentLocalStorageKey)
+            addStyle={tasksList[currentLocalStorageKey]
               ? 'todo__table__data_tasks todo__table__data_choisen'
               : 'todo__table__data_choisen'}
-            game={localStorage.getItem(currentLocalStorageKey)
-              ? JSON.parse(localStorage.getItem(currentLocalStorageKey)).some(i => i.game)
+            game={tasksList[currentLocalStorageKey]
+              ? tasksList[currentLocalStorageKey].some(i => i.game)
               : false}
             key={firstDayOfTheMonth - 1 + currentDayInTheCalendar - 1}
           />);
@@ -183,7 +187,6 @@ ComponentTodoCalendar.propTypes = {
   currentDate: PropTypes.instanceOf(Object).isRequired,
   currentDayInTheCalendar: PropTypes.number.isRequired,
   cells: PropTypes.instanceOf(Array).isRequired,
-  modalTextariaValue: PropTypes.string.isRequired,
   currentYear: PropTypes.number.isRequired,
   currentMonth: PropTypes.number.isRequired,
   currentLocalStorageKey: PropTypes.string.isRequired,

@@ -36,23 +36,41 @@ const mapDispatchToProps = (dispatch) => {
 
     onChange: e => {
       let action = {
+        modalCalendarVision: true,
         modalTextariaValue: e.target.value,
       }
-      dispatch(actionInputModalChange(action))
+      dispatch(actionCalendarModal(action))
     },
 
-    addTask: (currentLocalStorageKey, modalTextariaValue) => {
+    addTask: (currentLocalStorageKey, modalTextariaValue, textariaInput) => {
       let todaysTasks = JSON.parse(localStorage.getItem(currentLocalStorageKey));
-      let tasksList = todaysTasks ? todaysTasks : [];
+      todaysTasks = todaysTasks ? todaysTasks : [];
       let newTask = {};
 
       newTask.id = new Date().getTime();
       newTask.content = modalTextariaValue;
 
-      tasksList.push(newTask);
+      todaysTasks.push(newTask);
 
-      localStorage.setItem(currentLocalStorageKey, JSON.stringify(tasksList));
+      localStorage.setItem(currentLocalStorageKey, JSON.stringify(todaysTasks));
+
+      let tasksList = {};
+
+      if (localStorage) {
+        for (let key in localStorage) {
+          if (localStorage.getItem(key)) {
+            let content = JSON.parse(localStorage.getItem(key));
+            tasksList[key] = content;
+          }
+        }
+      } else {
+        tasksList = {};
+      }
+
+      textariaInput.current.focus();
+
       let action = {
+        tasksList: tasksList,
         modalTextariaValue: '',
       }
       dispatch(actionInputModalChange(action))

@@ -84,9 +84,8 @@ function ComponentTodoCalendar({
             <ContainerTableCells
               content={i + 1}
               addStyle="todo__table__data_tasks"
-              // game={localStorage.getItem(currentLocalStorageKey)
+              icon="pin"
               game={tasksList[currentLocalStorageKey]
-                // ? JSON.parse(localStorage.getItem(currentLocalStorageKey)).some(i => i.game)
                 ? tasksList[currentLocalStorageKey].some(i => i.game)
                 : false}
               key={firstDayOfTheMonth - 1 + i}
@@ -105,6 +104,7 @@ function ComponentTodoCalendar({
             <ContainerTableCells
               content={i + 1}
               addStyle="todo__table__data_tasks"
+              icon="pin"
               game={tasksList[currentLocalStorageKey]
                 ? tasksList[currentLocalStorageKey].some(i => i.game)
                 : false}
@@ -126,6 +126,9 @@ function ComponentTodoCalendar({
             addStyle={tasksList[currentLocalStorageKey]
               ? 'todo__table__data_tasks todo__table__data_choisen'
               : 'todo__table__data_choisen'}
+            icon={tasksList[currentLocalStorageKey]
+              ? "pin"
+              : null}
             game={tasksList[currentLocalStorageKey]
               ? tasksList[currentLocalStorageKey].some(i => i.game)
               : false}

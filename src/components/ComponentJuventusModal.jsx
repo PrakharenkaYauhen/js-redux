@@ -12,15 +12,14 @@ function ComponentJuventusModal({
   console.log('%c%s', 'color: blue', 'JuventusModal');
 
   let stuff;
+  const keyButtonEnterNumber = 9;
 
   if (juventusStuffIsLoaded) {
     const positionsArray = ['Manager', 'Goalkeeper', 'Left Back', 'Defender', 'Centre Back', 'Right Back', 'Midfielder',
       'Defensive Midfielder', 'Centre Midfielder', 'Attacking Midfielder', 'Left Wing', 'Right Wing', 'Forward'];
 
     const comparePositions = (a, b) => (
-      positionsArray.indexOf(a[1]) > positionsArray.indexOf(b[1])
-        ? 1
-        : -1
+      positionsArray.indexOf(a[1]) - positionsArray.indexOf(b[1])
     );
     juventusStuffObject.sort(comparePositions);
 
@@ -30,7 +29,7 @@ function ComponentJuventusModal({
   let exitButton = React.createRef();
 
   function handleClick(e) {
-    if (e.keyCode === 9) {
+    if (e.keyCode === keyButtonEnterNumber) {
       e.preventDefault();
       exitButton.current.focus();
     }

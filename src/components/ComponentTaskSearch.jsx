@@ -13,9 +13,10 @@ function ComponentTaskSearch({
   let currentlyTaskListDOM = [];
 
   const searchInput = React.createRef();
+  const keyButtonEnterNumber = 9;
 
   function handleTab(e) {
-    if (e.keyCode === 9) {
+    if (e.keyCode === keyButtonEnterNumber) {
       e.preventDefault();
       searchInput.current.focus();
     }

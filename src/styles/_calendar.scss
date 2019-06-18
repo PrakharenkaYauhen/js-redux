@@ -47,18 +47,19 @@
       cursor: pointer;
       position: relative;
 
-      @mixin table-icons($class, $width, $right, $top) {
+      @mixin table-icons($class, $width, $right, $left, $top) {
         .todo__table__#{$class} {
           position: absolute;
           width: $width;
           right: $right;
+          left: $left;
           top: $top;
         }
       }
 
-      @include table-icons(sun, 18px, 43px, -2px);
-      @include table-icons(pin, 13px, 0, 0);
-      @include table-icons(ball, 13px, 13px, 2px);
+      @include table-icons(sun, 18px, null, 0, -2px);
+      @include table-icons(pin, 13px, 0, null, 0);
+      @include table-icons(ball, 13px, 13px, null, 2px);
     }
 
     &__data_choisen {

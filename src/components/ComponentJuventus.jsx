@@ -41,9 +41,13 @@ class ComponentJuventus extends React.Component {
       onChangeTeam,
     } = this.props;
 
-    const teamNameHeader = clubName === 'cska'
+    let upperCaseFirstLetterOrEveryLetterForTeamAbbreviation = () => {
+      return clubName === 'cska'
       ? clubName.toUpperCase()
       : clubName.charAt(0).toUpperCase() + clubName.slice(1);
+    }
+
+    const teamNameHeader = upperCaseFirstLetterOrEveryLetterForTeamAbbreviation();
     const currentYear = currentDate.getFullYear();
     const currentMonth = currentDate.getMonth();
     const eventsArray = [];
@@ -54,6 +58,7 @@ class ComponentJuventus extends React.Component {
     }
 
     const comparedDate = `${currentYear}-${(`0${currentMonth + 1}`).slice(-2)}-${(`0${currentDayInTheCalendar}`).slice(-2)}`;
+    
     for (let i = 0; i < eventsArray.length; i += 1) {
       if (comparedDate === eventsArray[i]) {
         todayGame = juventusObject[1].events.filter(item => item.dateEvent === comparedDate)

@@ -12,9 +12,10 @@ function ComponentModalWindow({
   addTask,
 }) {
   let textariaInput = React.createRef();
+  const keyButtonEnterNumber = 9;
 
   function handleClick(e) {
-    if (e.keyCode === 9) {
+    if (e.keyCode === keyButtonEnterNumber) {
       e.preventDefault();
       textariaInput.current.focus();
     }

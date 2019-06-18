@@ -13,8 +13,32 @@ function ComponentTableCells({
   onClick,
   onDoubleClick,
   addStyle,
+  icon,
   onKeyDown,
 }) {
+  let getWeatherIcon = numberInObject => {
+    return (
+      <img
+        className="todo__table__sun"
+        src={numberInObject === 'today'
+          ? `https://openweathermap.org/img/w/${weatherObject[0].weather['0'].icon}.png`
+          : `https://openweathermap.org/img/w/${weatherObject[1].list[numberInObject].weather['0'].icon}.png`}
+        alt="icon weather"
+      />
+    )
+  }
+
+  const contentDate = `${currentDate.getMonth()} ${currentDate.getFullYear()}`;
+  const currentMonthAndYear = `${new Date().getMonth()} ${new Date().getFullYear()}`;
+  const nextMonthAndYear = `${new Date().getMonth() + 1} ${new Date().getFullYear()}`;
+  const newYearAndFirstMonth = `${0} ${currentDate.getFullYear() + 1}`;
+  const todaysDate = new Date().getDate();
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth();
+  const daysInThisMonth = 32 - new Date(currentYear, currentMonth, 32).getDate();
+  const daysDifference = daysInThisMonth - todaysDate;
+  // let daysDifference = 1;
+
   return (
     <td
       className={`todo__table__data todo__table__data_cells ${addStyle}`}
@@ -25,76 +49,38 @@ function ComponentTableCells({
     >
       {content}
 
-      {(addStyle === 'todo__table__data_tasks'
-        || addStyle === 'todo__table__data_tasks todo__table__data_choisen')
+      {icon === "pin" && (
+        <img
+          className="todo__table__pin"
+          src={imgPinBoardURL}
+          alt="icon pin"
+        />
+      )}
+
+      {icon = "pin" && game && (
+        <img
+          className="todo__table__ball"
+          src={imgBallURL}
+          alt="icon ball"
+        />
+      )}
+
+      {weatherObject && contentDate === currentMonthAndYear
         && (
-          <img
-            className="todo__table__pin"
-            src={imgPinBoardURL}
-            alt="icon pin"
-          />
+          content === todaysDate && getWeatherIcon('today')
+          || content === todaysDate + 1 && getWeatherIcon(8)
+          || content === todaysDate + 2 && getWeatherIcon(16)
+          || content === todaysDate + 3 && getWeatherIcon(24)
+          || content === todaysDate + 4 && getWeatherIcon(32)
         )}
 
-      {(addStyle === 'todo__table__data_tasks'
-        || addStyle === 'todo__table__data_tasks todo__table__data_choisen')
-        && game
+      {weatherObject && (contentDate === nextMonthAndYear || contentDate === newYearAndFirstMonth)
         && (
-          <img
-            className="todo__table__ball"
-            src={imgBallURL}
-            alt="icon ball"
-          />
+          content === 4 - daysDifference && getWeatherIcon(32)
+          || content === 3 - daysDifference && getWeatherIcon(24)
+          || content === 2 - daysDifference && getWeatherIcon(16)
+          || content === 1 - daysDifference && getWeatherIcon(8)
         )}
-
-      {weatherObject
-        && +currentDate.getMonth() === new Date().getMonth()
-        && +currentDate.getFullYear() === new Date().getFullYear()
-        && ((
-          content === new Date().getDate()
-          && (
-            <img
-              className="todo__table__sun"
-              src={`https://openweathermap.org/img/w/${weatherObject[0].weather['0'].icon}.png`}
-              alt="icon weather"
-            />
-          )
-        ) || (
-            content === new Date().getDate() + 1
-            && (
-              <img
-                className="todo__table__sun"
-                src={`https://openweathermap.org/img/w/${weatherObject[1].list[8].weather['0'].icon}.png`}
-                alt="icon weather"
-              />
-            )
-          ) || (
-            content === new Date().getDate() + 2
-            && (
-              <img
-                className="todo__table__sun"
-                src={`https://openweathermap.org/img/w/${weatherObject[1].list[16].weather['0'].icon}.png`}
-                alt="icon weather"
-              />
-            )
-          ) || (
-            content === new Date().getDate() + 3
-            && (
-              <img
-                className="todo__table__sun"
-                src={`https://openweathermap.org/img/w/${weatherObject[1].list[24].weather['0'].icon}.png`}
-                alt="icon weather"
-              />
-            )
-          ) || (
-            content === new Date().getDate() + 4
-            && (
-              <img
-                className="todo__table__sun"
-                src={`https://openweathermap.org/img/w/${weatherObject[1].list[32].weather['0'].icon}.png`}
-                alt="icon weather"
-              />
-            )
-          ))}
     </td>
   );
 }
